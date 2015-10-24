@@ -40,6 +40,14 @@ Para seguir una metodología de desarrollo continuo **DevOps** se va a emplear u
 
 Por último, la aplicación estará preparada para desplegarse en un PaaS como [**Azure**](https://github.com/azure). También se realizará un provisionamiento de software automático con [**Ansible**](https://github.com/ansible/ansible) para instalarle todos los recursos software y efectuar todas las configuraciones necesarias; y un despliegue automático para instalar o actualizar la aplicación en el servidor y probar sus funcionalidades, para eso se puede usar [**Flightplan**](https://github.com/pstadler/flightplan), que es también un paquete disponible para Node.js.
 
+En cuanto a los [hitos](https://github.com/Gescosolution/Gesco-DatabaseManagement/milestones) que se han creado para abarcar todas las tareas del proyecto, son cinco, y cada uno agrupo un conjunto de tareas que se llevarán a cabo en diferentes fases del proyecto.:
+
+* **docs**: tareas de documentación.
+* **app**: tareas de desarrollo de la aplicación.
+* **tests**: tareas de tests e integración.
+* **deploy**: tareas de despliegue.
+* **conf**: tareas de gestión de configuraciones.
+
 # Relación con la asignatura
 
 La principal relación del proyecto con la asignatura es que como se ha descrito en el apartado anterior, se van a poner en práctica diferentes herramientas que se suelen usar en un desarrollo DevOps y que además iremos viendo durante el temario de la asignatura; estas herramientas son: pruebas unitarias para un desarrollo basado en tests, integración continua, provisionamiento software y despliegue automático. Todo esto hace que de inicio este proyecto cumpla con todos los aspectos necesarios para ser evaluable durante todas las prácticas de la asignatura.
