@@ -1,1 +1,6 @@
+# Directorio instalación módulos
+node_modules
+
+# Logs y copias de seguridad
+*.log
 *~
