@@ -40,13 +40,18 @@ Para seguir una metodología de desarrollo continuo **DevOps** se va a emplear u
 
 Por último, la aplicación estará preparada para desplegarse en un PaaS como [**Azure**](https://github.com/azure). También se realizará un provisionamiento de software automático con [**Ansible**](https://github.com/ansible/ansible) para instalarle todos los recursos software y efectuar todas las configuraciones necesarias; y un despliegue automático para instalar o actualizar la aplicación en el servidor y probar sus funcionalidades, para eso se puede usar [**Flightplan**](https://github.com/pstadler/flightplan), que es también un paquete disponible para Node.js.
 
-En cuanto a los [hitos](https://github.com/Gescosolution/Gesco-DatabaseManagement/milestones) que se han creado para abarcar todas las tareas del proyecto, son cinco, y cada uno agrupo un conjunto de tareas que se llevarán a cabo en diferentes fases del proyecto.:
+En cuanto a los [hitos](https://github.com/Gescosolution/Gesco-DatabaseManagement/milestones) que se han creado para agrupar todas las tareas del proyecto que se van a ir desarrollando en las diferentes fases son los siguientes:
 
-* **docs**: tareas de documentación.
-* **app**: tareas de desarrollo de la aplicación.
-* **tests**: tareas de tests e integración.
-* **deploy**: tareas de despliegue.
-* **conf**: tareas de gestión de configuraciones.
+* **Definición estructura proyecto**: explicación del proyecto en su estado inicial.
+* **Instalación herramientas desarrollo**: puesta en marcha de Node.js y el resto de utilidades que se van a utilizar para desarrollar el proyecto.
+* **Desarrollo gestión base de datos**: parte de la funcionalidad relacionada con el acceso y la recuperación de datos desde la base de datos.
+* **Desarrollo generación PDF**: parte de la funcionalidad relacionada con la generación de los informes en PDF mediante plantillas LaTeX.
+* **Desarrollo generación gráficos**: parte de la funcionalidad relacionada con la generación de los gráficos mediante script en R.
+* **Creación entorno pruebas**: primeras pruebas unitarias, prueba de cobertura inicial y configuración de la integración continua.
+* **Despliegue aplicación**: creación y configuración de las infraestruturas virtuales en las que se va a instalar la aplicación además del despliegue de la aplicación haciendo uso de las mismas.
+* **Documentación**: documentación de la instalación y funcionalidad de la aplicación.
+
+Además, están creados los primeros temas para las [tareas más inminentes](https://github.com/Gescosolution/Gesco-DatabaseManagement/issues), aunque seguramente crecerán en número en cuanto comience el desarrollo.
 
 # Relación con la asignatura
 
