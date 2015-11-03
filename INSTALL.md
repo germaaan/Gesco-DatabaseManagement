@@ -19,7 +19,7 @@ La instalación de VoltDB solo está comprobada en el sistema operativo Ubuntu 1
 ```
 sudo apt-get update && sudo apt-get dist-upgrade
 
-sudo apt-get -y install ant build-essential ant-optional default-jdk python valgrind ntp ccache git-arch git-completion git-core git-svn git-doc git-email python-httplib2 python-setuptools python-dev apt-show-versions
+sudo apt-get -y install ant ant-optional apt-show-versions build-essential ccache default-jdk git-arch git-completion git-core git-doc git-email git-svn ntp python python-dev python-httplib2 python-setuptools valgrind
 
 // Solo para Vagrant
 sudo dd if=/dev/zero of=/swap bs=1M count=1024
@@ -61,14 +61,24 @@ sudo apt-get install texlive texlive-latex-extra texlive-lang-spanish
 
 ## R
 
-Añadir la siguiente línea al archivo `/etc/apt/sources.list`:
+```
+sudo apt-get install libblas3 libgfortran3 liblapack3 liblapack-dev liblzma-dev libopenblas-base libopenblas-dev libpaper-utils libpaper1 libtcl8.6:amd64 libtk8.6:amd64 libxss1 unzip xdg-utils zip
+
+wget https://cran.r-project.org/bin/linux/ubuntu/trusty/r-base-core_3.2.2-1trusty0_amd64.deb -qO temp && sudo dpkg -i temp; rm temp
+```
+
+Para instalar el paquete `rstats` y realizar las gráficas:
 
 ```
-deb http://cran.es.r-project.org/bin/linux/ubuntu trusty/
+sudo R
+
+> install.packages(c("RInside", "Rcpp", "RJSONIO", "ggplot2"), dependencies=TRUE, repos="http://cran.r-project.org/")
 ```
 
+
+# Instrucciones para la ejecución
+
 ```
-sudo apt-get update
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
-sudo apt-get install r-base
+sudo npm install
+node app.js
 ```
