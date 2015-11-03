@@ -2,6 +2,14 @@
 
 ## Node.js
 
+```
+git clone https://github.com/tj/n.git
+cd n
+sudo make install
+sudo n 0.11.6
+sudo n 0.12.7
+```
+
 ## VoltDB
 
 La instalación de VoltDB solo está comprobada en el sistema operativo Ubuntu 14.04.3 LTS, solo consiguiendo que funcione en una versión Server para máquinas virtuales de Microsoft Azure (b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_3-LTS-amd64-server-20151020-en-us-30GB) y una caja con la versión Cloud para Vagrant (http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box).
@@ -47,4 +55,20 @@ Comprobar mediante la [API](http://gesco.cloudapp.net:8080/api/1.0/?Procedure=@S
 
 ## TeX Live
 
+```
+sudo apt-get install texlive texlive-latex-extra texlive-lang-spanish
+```
+
 ## R
+
+Añadir la siguiente línea al archivo `/etc/apt/sources.list`:
+
+```
+deb http://cran.es.r-project.org/bin/linux/ubuntu trusty/
+```
+
+```
+sudo apt-get update
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+sudo apt-get install r-base
+```
