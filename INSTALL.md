@@ -45,10 +45,17 @@ En el directorio `voltdb/bin` crear el archivo `deployment.xml`:
 </deployment>
 ```
 
+Añadir las siguientes líneas al archivo `/etc/rc.local`:
+
+```
+sudo bash -c "echo never > /sys/kernel/mm/transparent_hugepage/enabled"
+sudo bash -c "echo never > /sys/kernel/mm/transparent_hugepage/defrag"
+```
+
 Arrancar la base de datos:
 
 ```
-nohup ./voltdb create -d deployment.xml &
+nohup ~/voltdb/bin/voltdb create -d ~/voltdb/bin/deployment.xml &
 ```
 
 Comprobar mediante la [API](http://gesco.cloudapp.net:8080/api/1.0/?Procedure=@SystemInformation) que es accesible remotamente.
