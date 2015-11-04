@@ -4,7 +4,9 @@
   "author": "Germán Martínez Maldonado",
   "description": "Módulo para la gestión de la información de la base de datos de la aplicación Gesco.",
   "keywords": [
-    "gestión", "información", "base de datos"
+    "gestión",
+    "información",
+    "base de datos"
   ],
   "bugs": {
     "url": "https://github.com/Gescosolution/Gesco-DatabaseManagement/issues"
@@ -21,16 +23,11 @@
   ],
   "private": false,
   "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": ""
-  },
-  "directories": {
     "lib": "lib",
     "test": "test"
   },
   "scripts": {
+    "start": "node ./app.js",
     "test": ""
   },
   "dependencies": {

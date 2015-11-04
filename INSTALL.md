@@ -38,10 +38,10 @@ En el directorio `voltdb/bin` crear el archivo `deployment.xml`:
 ```
 <?xml version="1.0"?>
 <deployment>
-    <cluster hostcount="1" sitesperhost="1" />
-    <httpd enabled="true">
-        <jsonapi enabled="true" />
-    </httpd>
+   <cluster hostcount="1" />
+   <httpd enabled="true">
+      <jsonapi enabled="true" />
+   </httpd>
 </deployment>
 ```
 
@@ -86,6 +86,12 @@ sudo R
 # Instrucciones para la ejecución
 
 ```
-sudo npm install
-node app.js
+npm install --save
+npm start
+```
+
+Nota: Para comprobar que todas las dependencias se han instalado correctamente:
+
+```
+npm list --depth=0
 ```
