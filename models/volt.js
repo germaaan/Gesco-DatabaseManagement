@@ -24,39 +24,46 @@ var util = require('util');
 var VoltConfiguration = require('voltjs/lib/configuration');
 var VoltClient = require('voltjs/lib/client');
 var VoltConstants = require('voltjs/lib/voltconstants');
+var VoltProcedure = require('voltjs/lib/query');
 
-var client = null;
+var insercion = new VoltProcedure('Insercion', ['string']);
+
+var config = new VoltConfiguration();
+config.host = "gesco.cloudapp.net";
+config.messageQueueSize = 10;
+
+var cliente = new VoltClient([config]);
 
 function eventListener(code, event, message) {
-  util.log(util.format( 'Evento %s\tCódigo: %d\tMensaje: %s', event, code,
-    message));
+  util.log(util.format('Evento %s\tCódigo: %d\tMensaje: %s', event, code, message));
 }
 
-function getConfiguration() {
-  var cfg = new VoltConfiguration();
-  cfg.host = "gesco.cloudapp.net";
-  cfg.messageQueueSize = 10;
-
-  return cfg;
-}
-
-exports.initClient = function() {
-  if(client == null) {
-    var configs = [];
-
-    configs.push(getConfiguration());
-    client = new VoltClient(configs);
-
-    client.on(VoltConstants.SESSION_EVENT.CONNECTION,eventListener);
-    client.on(VoltConstants.SESSION_EVENT.CONNECTION_ERROR,eventListener);
-    client.on(VoltConstants.SESSION_EVENT.QUERY_RESPONSE_ERROR,eventListener);
-    client.on(VoltConstants.SESSION_EVENT.QUERY_DISPATCH_ERROR,eventListener);
-    client.on(VoltConstants.SESSION_EVENT.FATAL_ERROR,eventListener);
-
-    client.connect(function startup(code, event,results) {
-      util.log('Conexión a base de datos VoltDB realizada correctamente...');
-    }, function loginError(code, event, results) {
-      util.log('Error al conectar a la base de datos VoltDB.');
-    });
+function getResultado(code, event, results) {
+  if (code == VoltConstants.STATUS_CODES.SUCCESS) {
+    util.log('Resultado: ' + results.statusString);
+  } else {
+    util.log("Error al ejecutar la consulta.");
   }
+}
+
+function consultaInsercion() {
+  var query = insercion.getQuery();
+  query.setParameters(["Hola mundo"]);
+
+  cliente.callProcedure(query, getResultado);
+}
+
+exports.ejecutar = function() {
+  cliente.on(VoltConstants.SESSION_EVENT.CONNECTION, eventListener);
+  cliente.on(VoltConstants.SESSION_EVENT.CONNECTION_ERROR, eventListener);
+  cliente.on(VoltConstants.SESSION_EVENT.QUERY_RESPONSE_ERROR, eventListener);
+  cliente.on(VoltConstants.SESSION_EVENT.QUERY_DISPATCH_ERROR, eventListener);
+  cliente.on(VoltConstants.SESSION_EVENT.FATAL_ERROR, eventListener);
+
+  cliente.connect(function startup(code, event, results) {
+    util.log('Conexión a base de datos VoltDB realizada correctamente...');
+    // consultaInsercion();
+  }, function loginError(code, event, results) {
+    util.log('Error al conectar a la base de datos VoltDB.');
+  });
 }

@@ -23,13 +23,13 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 // Dependencias
 var express = require('express');
 var http = require('http');
-var volt = require('./models/volt');
+var volt = require(__dirname + '/models/volt');
 
 // Crea aplicación web con Express
 var app = express();
 
 // Inicio
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
   res.send('Hola Mundo!')
 })
 
@@ -42,4 +42,4 @@ http.createServer(app).listen(app.get('port'), app.get('ip'), function() {
   console.log('Servidor Express escuchando en ' + app.get('ip') + ':' + app.get('port'));
 });
 
-volt.initClient();
+volt.ejecutar();
