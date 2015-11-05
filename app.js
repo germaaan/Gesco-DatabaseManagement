@@ -37,30 +37,12 @@ var app = express();
 // Funcionalidades
 app.get('/', index.index);
 app.get('/grafico', grafico.grafico);
-// app.get('/grafico', graficos.grafico);
-// app.get('/grafico', function(req, res) {
-//   res.writeHead(200, {
-//     'Content-Type': 'text/html'
-//   });
-//
-//   res.write('R graph<br>');
-//
-//   exec('./public/scripts/prueba.R', function(error, stdout, stderr) {
-//     console.log('Salida: ' + stdout);
-//     if (error != null) {
-//       console.log('Error al generar gráfico: ' + error);
-//     }
-//
-//     res.write('<img src="/prueba.png"/>');
-//     res.end('<br>end of R script');
-//   });
-// });
 
 // Variables de entorno
 app.set('port', process.env.PORT || 3000);
 app.set('ip', process.env.IP || '127.0.0.1');
 // Directorio con las plantillas
-// app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
 // Motor de visualización
 app.set('view engine', 'jade');
 
