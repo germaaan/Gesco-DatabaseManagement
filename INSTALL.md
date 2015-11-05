@@ -1,5 +1,11 @@
 # Instrucciones para la instalación
 
+Antes de nada lo primero es instalar `git` y el paquete `build-essential`
+
+```
+sudo apt-get git build-essential
+```
+
 ## Node.js
 
 ```
@@ -69,17 +75,11 @@ sudo apt-get install texlive texlive-latex-extra texlive-lang-spanish
 ## R
 
 ```
-sudo apt-get install libblas3 libgfortran3 liblapack3 liblapack-dev liblzma-dev libopenblas-base libopenblas-dev libpaper-utils libpaper1 libtcl8.6:amd64 libtk8.6:amd64 libxss1 unzip xdg-utils zip
+sudo apt-get install libblas3 libcairo2 libgfortran3 libjpeg8 liblapack3 libpango-1.0-0 libpangocairo-1.0-0 libpaper-utils libpaper-utils libssl0.9.8 libtcl8.6 libtiff5 libtk8.6 libxt6 unzip xdg-utils zip
 
 wget https://cran.r-project.org/bin/linux/ubuntu/trusty/r-base-core_3.2.2-1trusty0_amd64.deb -qO temp && sudo dpkg -i temp; rm temp
-```
 
-Para instalar el paquete `rstats` y realizar las gráficas:
-
-```
-sudo R
-
-> install.packages(c("RInside", "Rcpp", "RJSONIO", "ggplot2"), dependencies=TRUE, repos="http://cran.r-project.org/")
+sudo su - -c "R -e \"install.packages('ggplot2', dependencies=TRUE, repos='http://cran.r-project.org/')\""
 ```
 
 

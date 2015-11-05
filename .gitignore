@@ -4,3 +4,7 @@ node_modules
 # Logs y copias de seguridad
 *.log
 *~
+
+# Archivos binarios temporales
+*.pdf
+public/scripts/*.png
