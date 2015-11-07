@@ -1,0 +1,50 @@
+//
+	Gesco-DatabaseManagement. Módulo para la gestión de la información de la base
+	de datos de la aplicación Gesco. Copyright (C) 2015 Germán Martínez Maldonado
+
+	This file is part of Gesco-DatabaseManagement.
+
+	Gesco-DatabaseManagement  is free software: you can redistribute it and/or
+	modify it under the terms of the GNU General Public License
+	as published by the Free Software Foundation, either version 2
+	of the License, or any later version.
+
+	Gesco-DatabaseManagement is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+
+doctype html(lang='es')
+head
+	meta(charset='utf-8')
+	meta(name='viewport', content='width=device-width, initial-scale=1')
+	meta(name='description', content='')
+	meta(name='author', content='')
+	link(rel='icon', href='/images/favicon.ico')
+	title= title
+	link(rel='stylesheet', href='/style/css/style.css')
+body
+	nav.navbar.navbar-inverse.navbar-fixed-top
+		.container
+			.navbar-header
+				button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+			#navbar.collapse.navbar-collapse
+				ul.nav.navbar-nav
+					li.active
+						a(href='#') Inicio
+					li
+						a(href='#graficos') Gráficos
+					li
+						a(href='#informes') Informes
+	.container
+		.starter-template
+			block content
+	script(src='/js/build/app.js')
