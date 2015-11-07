@@ -1,0 +1,15 @@
+{
+  "name": "Gesco-DatabaseManagement",
+  "version": "0.1.0",
+  "author": [
+    "Germán Martínez Maldonado <germaaan@gmail.com>"
+  ],
+  "description": "Módulo para la gestión de la información de la base de datos de la aplicación Gesco.",
+  "main": "./bin/www",
+  "license": "GPL-2.0",
+  "private": false,
+  "dependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#^3.3.5",
+    "font-awesome": "fontawesome#^4.4.0"
+  }
+}
