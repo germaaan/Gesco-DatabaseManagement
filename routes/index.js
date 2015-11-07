@@ -1,5 +1,3 @@
-#!/usr/bin/env nodejs
-
 /*
 Gesco-DatabaseManagement. Módulo para la gestión de la información de la base de datos de la aplicación Gesco.
 Copyright (C) 2015 Germán Martínez Maldonado
@@ -21,14 +19,13 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
 
-// Pagina de inicio
-exports.index = function(req, res) {
-  res.render('index', {});
-};
+// Dependencias
+var express = require('express');
+var router = express.Router();
 
-// Pagina de error
-exports.error = function(req, res) {
-  res.render('index', {
-    mensaje: data
-  });
-}
+// GET de la página principal
+router.get('/', function(req, res) {
+  res.render('index', { title: 'Gesco-DatabaseManagement' });
+});
+
+module.exports = router;

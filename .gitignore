@@ -1,6 +1,15 @@
 # Directorio instalación módulos
 node_modules
 
+# Directorio de librerías instaladas
+public/lib
+
+# Directorio de scripts JavaScript generados
+public/js/build
+
+# Directorios de hojas de estilo CSS generadas
+public/style/css
+
 # Logs y copias de seguridad
 *.log
 *~
