@@ -43,17 +43,32 @@ var cargar = function(archivo) {
   return config;
 };
 
+var enlaces = cargar(__dirname + "/../test/enlaces.json");
+
 // Prueba de acceso
-describe('Prueba de acceso', function(){
-  it("Página de error", function(done){
-    request(app)
-    .get("/foo")
-    .expect(404)
-    .end(function(err, res){
-      if (err){
-        throw err;
-      }
-      done();
+describe('Prueba de acceso', function() {
+  _.each(enlaces, function(valor) {
+    it(valor.nombre, function(done) {
+      request(app)
+        .get(valor.ruta)
+        .expect(200)
+        .end(function(err, res) {
+          if (err) {
+            throw err;
+          }
+          done();
+        });
     });
+  });
+  it("Página de error", function(done) {
+    request(app)
+      .get("/foo")
+      .expect(404)
+      .end(function(err, res) {
+        if (err) {
+          throw err;
+        }
+        done();
+      });
   });
 });

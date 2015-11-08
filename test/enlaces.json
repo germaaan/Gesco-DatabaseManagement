@@ -1,0 +1,10 @@
+[{
+  "nombre": "Inicio",
+  "ruta": "/"
+}, {
+  "nombre": "Gráficos",
+  "ruta": "/graficos"
+}, {
+  "nombre": "Informes",
+  "ruta": "/informes"
+}]
