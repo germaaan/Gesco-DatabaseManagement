@@ -32,7 +32,7 @@ var http = require('http');
 var logger = require('morgan');
 var path = require('path');
 
-var voltdb = require('./lib/volt');
+var volt = require('./lib/volt');
 
 // Rutas
 var index = require('./routes/index');
@@ -70,64 +70,29 @@ app.use('/informes', informes);
 
 // Captura errores 404 y los reenvia al manejador de errores
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  var err = new Error('No encontrado.');
   err.status = 404;
   next(err);
 });
 
-// (PENDIENTE DE TESTEAR PARCIALMENTE)
 // Manejador de errores:
-// - Modo desarrollo -> imprime mensajes en la pila de errores
-// - Modo producción -> no imprime los mensajes de error
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
+app.use(function(err, req, res, next) {
+  res.status(err.status);
+  res.render('error', {
+    message: err.message,
+    error: err
   });
-} else {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: {}
-    });
-  });
-}
+});
 
 // Creación del servidor
 var server = http.createServer(app);
 server.listen(app.get('port'));
-// server.on('error', onError);
 server.on('listening', onListening);
-
-// (PENDIENTE DE TESTEAR)
-// Escuchador de eventos para eventos de error en el servidor HTTP
-function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
-
-  switch (error.code) {
-    case 'EACCES':
-      console.error('El puerto ' + port + ' requiere privilegios de administrador.');
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error('El puerto ' + port + ' ya está en uso.');
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-}
 
 // Escuchador de eventos de peticiones al servidor HTTP
 function onListening() {
   debug('Servidor Express escuchando localmente en el puerto ' + server.address().port);
-  voltdb.ejecutar();
+  volt.ejecutar();
 }
 
 module.exports = app;
