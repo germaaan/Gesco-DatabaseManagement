@@ -25,7 +25,6 @@
   ],
   "private": false,
   "directories": {
-    "lib": "lib",
     "test": "test"
   },
   "scripts": {
@@ -33,7 +32,7 @@
     "start": "gulp server",
     "pretest": "gulp lint",
     "test": "istanbul cover _mocha -- --recursive -R spec -r should",
-    "coveralls": "npm test && ./node_modules/coveralls/bin/coveralls.js < coverage/lcov.info"
+    "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec -r should && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "dependencies": {
     "body-parser": "^1.14.1",
@@ -60,7 +59,6 @@
     "gulp-uglify": "^1.4.2",
     "istanbul": "^0.4.0",
     "mocha": "^2.3.3",
-    "mocha-lcov-reporter": "^1.0.0",
     "react": "^0.14.2",
     "should": "^7.1.1",
     "supertest": "^1.1.0"
