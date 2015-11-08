@@ -32,7 +32,8 @@
     "postinstall": "bower install",
     "prestart": "gulp",
     "start": "node app",
-    "test": ""
+    "pretest": "gulp",
+    "test": "istanbul cover _mocha ./test --recursive"
   },
   "dependencies": {
     "body-parser": "^1.14.1",
@@ -43,6 +44,7 @@
     "morgan": "^1.6.1",
     "request": "^2.65.0",
     "serve-favicon": "^2.3.0",
+    "underscore": "^1.8.3",
     "voltjs": "^0.2.0"
   },
   "devDependencies": {
@@ -52,10 +54,12 @@
     "gulp-nodemon": "^2.0.4",
     "gulp-sass": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
+    "istanbul": "^0.4.0",
     "mocha": "^2.3.3",
     "react": "^0.14.2",
     "reactify": "^1.1.1",
     "should": "^7.1.1",
+    "supertest": "^1.1.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "engines": {

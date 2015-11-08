@@ -1,8 +1,8 @@
 #!/usr/bin/env nodejs
 
 /*
-Gesco-DatabaseManagement. Módulo para la gestión de la información de la base de datos de la aplicación Gesco.
-Copyright (C) 2015 Germán Martínez Maldonado
+Gesco-DatabaseManagement. Módulo para la gestión de la información de la base
+de datos de la aplicación Gesco. Copyright (C) 2015 Germán Martínez Maldonado
 
 This file is part of Gesco-DatabaseManagement.
 

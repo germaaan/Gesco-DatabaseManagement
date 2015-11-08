@@ -7,8 +7,10 @@ public/lib
 # Directorio de scripts JavaScript generados
 public/js/build
 
-# Directorios de hojas de estilo CSS generadas
+# Directorio de hojas de estilo CSS generadas
 public/style/css
+
+# Directorio con el resultado de los tests de cobertura
 
 # Logs y copias de seguridad
 *.log

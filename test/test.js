@@ -1,3 +1,5 @@
+#!/usr/bin/env nodejs
+
 /*
 Gesco-DatabaseManagement. Módulo para la gestión de la información de la base
 de datos de la aplicación Gesco. Copyright (C) 2015 Germán Martínez Maldonado
@@ -18,33 +20,40 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-var React = require('react');
-var Prueba = require('./Prueba.jsx');
-var Grafico = require('./Grafico.jsx');
 
-var data = [
-  {
-    name: "Manzanas",
-    count: 10
-  }, {
-    name: "Naranjas",
-    count: 20
-  }, {
-    name: "Platanos",
-    count: 5
-  }, {
-    name: "Fresas",
-    count: 42
-  }, {
-    name: "Uvas ",
-    count: 29
+// Dependencias
+var _ = require("underscore");
+var fs = require("fs");
+var request = require("supertest");
+var should = require("should");
+
+// Módulo de la aplicación
+var app = require(__dirname + "/../app.js");
+
+// Método para parsear archivos JSON a objetos JS
+var cargar = function(archivo) {
+  var config = null;
+
+  try {
+    config = JSON.parse(fs.readFileSync(archivo));
+  } catch (e) {
+    console.log("Error: no existe el archivo " + archivo);
   }
-];
 
-// Renderizar componente de prueba
-React.render(
-  <Prueba/>, document.getElementById('prueba'));
+  return config;
+};
 
-// Renderizar componente de gráfico
-React.render(
-  <Grafico data={data} title="Gráfico de prueba"/>, document.getElementById('grafico'));
+// Prueba de acceso
+describe('Prueba de acceso', function(){
+  it("Página de error", function(done){
+    request(app)
+    .get("/foo")
+    .expect(404)
+    .end(function(err, res){
+      if (err){
+        throw err;
+      }
+      done();
+    });
+  });
+});
