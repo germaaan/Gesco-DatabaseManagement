@@ -32,7 +32,7 @@ var http = require('http');
 var logger = require('morgan');
 var path = require('path');
 
-var voltdb = require('./models/volt')
+var voltdb = require('./models/volt');
 
 // Rutas
 var index = require('./routes/index');
@@ -75,6 +75,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+// (PENDIENTE DE TESTEAR)
 // Manejador de errores:
 // - Modo desarrollo -> imprime mensajes en la pila de errores
 // - Modo producción -> no imprime los mensajes de error
@@ -99,28 +100,29 @@ if (app.get('env') === 'development') {
 // Creación del servidor
 var server = http.createServer(app);
 server.listen(app.get('port'));
-server.on('error', onError);
+// server.on('error', onError);
 server.on('listening', onListening);
 
+// (PENDIENTE DE TESTEAR)
 // Escuchador de eventos para eventos de error en el servidor HTTP
-function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
-
-  switch (error.code) {
-    case 'EACCES':
-      console.error('El puerto ' + port + ' requiere privilegios de administrador.');
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error('El puerto ' + port + ' ya está en uso.');
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-}
+// function onError(error) {
+//   if (error.syscall !== 'listen') {
+//     throw error;
+//   }
+//
+//   switch (error.code) {
+//     case 'EACCES':
+//       console.error('El puerto ' + port + ' requiere privilegios de administrador.');
+//       process.exit(1);
+//       break;
+//     case 'EADDRINUSE':
+//       console.error('El puerto ' + port + ' ya está en uso.');
+//       process.exit(1);
+//       break;
+//     default:
+//       throw error;
+//   }
+// }
 
 // Escuchador de eventos de peticiones al servidor HTTP
 function onListening() {

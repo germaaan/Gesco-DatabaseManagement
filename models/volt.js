@@ -66,4 +66,4 @@ exports.ejecutar = function() {
   }, function loginError(code, event, results) {
     util.log('Error al conectar a la base de datos VoltDB.');
   });
-}
+};

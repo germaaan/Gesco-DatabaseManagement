@@ -22,35 +22,63 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 // Dependencias
 var gulp = require('gulp');
 
-var browserify = require('browserify');
+var concat = require('gulp-concat');
+var install = require('gulp-install');
+var jshint = require('gulp-jshint');
 var nodemon = require('gulp-nodemon');
-var reactify = require('reactify');
+var rename = require('gulp-rename');
 var sass = require('gulp-sass');
-var source = require('vinyl-source-stream');
-var sourcemaps = require('gulp-sourcemaps');
+var uglify = require('gulp-uglify');
+// var browserify = require('browserify');
+// var reactify = require('reactify');
+// var source = require('vinyl-source-stream');
 
-// Genera todos los scripts JavaScript correspondientes a todos los componentes React
-gulp.task('js', function() {
-  browserify('./public/js/src/app.jsx')
-    .transform(reactify)
-    .bundle()
-    .pipe(source('app.js'))
-    .pipe(gulp.dest('./public/js/build/'));
+var json = ['./package.json', './bower.json'];
+var scripts = ['app.js', 'models/*.js', 'public/js/src/*.js'];
+var estilos = './public/style/scss/*.scss';
+
+gulp.task('install', function() {
+  return gulp.src(json)
+    .pipe(install());
 });
 
-// Genera todas las hojas de estilo CSS correspondientes a todos los scripts SCSS
+// Compila los componentes React
+// gulp.task('js', function() {
+//   browserify('./public/js/react/app.jsx')
+//     .transform(reactify)
+//     .bundle()
+//     .pipe(source('app.js'))
+//     .pipe(gulp.dest('./public/js/build/'));
+// });
+
+// Comprobación sintáctica del código
+gulp.task('lint', function() {
+  return gulp.src(scripts)
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
+});
+
+// Compila los scripts de las hojas de estilo
 gulp.task('sass', function() {
-  gulp.src('./public/style/scss/*.scss')
-    .pipe(sourcemaps.init())
+  gulp.src(estilos)
     .pipe(sass())
-    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./public/style/css'));
 });
 
-// Vuelve a generar los archivos cuando cambia algún JSX o SCSS
+// Concatena y minifica los archivos JS
+gulp.task('scripts', function() {
+  return gulp.src(scripts)
+    .pipe(concat('all.js'))
+    .pipe(gulp.dest('dist'))
+    .pipe(rename('all.min.js'))
+    //.pipe(uglify())
+    .pipe(gulp.dest('dist'));
+});
+
+// Observa los archivos pendiente de cambios
 gulp.task('watch', function() {
-  gulp.watch("./public/js/src/**/*.jsx", ["js"])
-  gulp.watch("./public/style/scss/*.scss", ["sass"])
+  gulp.watch(scripts, ['lint', 'scripts']);
+  gulp.watch(estilos, ['sass']);
 });
 
 // Ejecuta la aplicación con nodemon para reiniciarse ante cualquier cambio
@@ -65,4 +93,4 @@ gulp.task('server', function() {
 });
 
 // Tarea por defecto (métodos de generación)
-gulp.task('default', ['js', 'sass']);
+gulp.task('default', ['install', 'lint', 'sass', 'scripts']);
