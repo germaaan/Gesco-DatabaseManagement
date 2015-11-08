@@ -29,7 +29,6 @@ var should = require("should");
 
 // Módulo de la aplicación
 var app = require(__dirname + "/../app");
-var volt = require(__dirname + "/../lib/volt");
 
 // Método para parsear archivos JSON a objetos JS
 var cargar = function(archivo) {
@@ -49,14 +48,14 @@ var enlaces = cargar(__dirname + "/../test/enlaces.json");
 // Enlaces a comprobar
 describe('Archivo de enlaces', function(){
   it('Cargado', function(){
-    enlaces.should.not.be.null;
+    should(enlaces).not.be.null();
   });
   it('Correcto', function() {
     _.each(enlaces, function(valor) {
       var size = _.size(valor);
-      size.should.be.exactly(2);
-      valor.should.have.property("nombre");
-      valor.should.have.property("ruta");
+      should(size).be.exactly(2);
+      should(valor).have.property("nombre");
+      should(valor).have.property("ruta");
     });
   });
 });
