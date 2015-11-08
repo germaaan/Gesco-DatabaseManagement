@@ -1,5 +1,5 @@
 [![node](https://img.shields.io/badge/node-0.12.7-blue.svg)](https://nodejs.org/en/)
-[![license](https://img.shields.io/badge/license-GPL%202.0-blue.svg)](https://nodejs.org/en/)
+[![license](https://img.shields.io/badge/license-GPL%202.0-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 [![Build Status](https://img.shields.io/travis/Gescosolution/Gesco-DatabaseManagement/master.svg?style=flat&label=Linux%20build)](https://travis-ci.org/Gescosolution/Gesco-DatabaseManagement)
 
 [![Dependency Status](https://img.shields.io/david/Gescosolution/Gesco-DatabaseManagement.svg?style=flat)](https://david-dm.org/Gescosolution/Gesco-DatabaseManagement)
