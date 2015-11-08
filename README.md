@@ -1,4 +1,4 @@
-![Build Status](https://img.shields.io/travis/Gescosolution/Gesco-DatabaseManagement.svg)
+![Build Status](https://travis-ci.org/Gescosolution/Gesco-DatabaseManagement.svg?branch=master)
 
 # Gesco-DatabaseManagement
 Módulo para la gestión de información de la base de datos de la aplicación Gesco. Publicado bajo licencia **GNU GENERAL PUBLIC LICENSE Version 2**.
