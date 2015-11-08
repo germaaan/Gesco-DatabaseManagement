@@ -25,7 +25,9 @@ var router = express.Router();
 
 // GET de la página principal
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Gesco-DatabaseManagement' });
+  res.render('index', {
+    title: 'Gesco-DatabaseManagement: Inicio'
+  });
 });
 
 module.exports = router;

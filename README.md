@@ -6,13 +6,11 @@ Este proyecto participa en el Certamen de Proyectos Libres de la Universidad de 
 Desarrollado por Germán Martínez Maldonado ([@germaaan](https://github.com/germaaan)).
 
 # Descripción
-
 Como parte de la aplicación Gesco, este módulo se encargará de toda la gestión de la información en la base de datos sobre los proyectos que se están llevando a cabo por la empresa del cliente. Esta puede información puede ser referida tanto a los diferentes proyectos que se están llevando a cabo en la empresa del cliente, como las tareas que es necesario gestionar para llevar a cabo esos proyectos o las personas que realizarán las tareas según se les vayan asignando.
 
 También llevará a cabo la presentación de la información que el cliente requiera, para ofrecer esta información de una forma más amigable se generarán informes siguiente una estandarización y también diferentes gráficos para interpretar los datos existentes.
 
 # Motivación
-
 Las bases de datos son muy importantes en cualquier tipo de aplicación, sin embargo uno de los principales problemas de las típicas bases de datos relacionales que usan muchas aplicaciones es que cuando la aplicación crece considerablemente, conseguir esa escalabilidad en la base de datos se puede volver una tarea muy complicada.
 
 Desde un tiempo a esta parte se ha popularizado el uso de bases de datos **NoSQL**, siendo [**MongoDB**](https://github.com/mongodb/mongo) una de las conocidas. Estas bases de datos se basan en usar una escalabilidad horizontal, por lo que no se basa en la idea de que para manejar una base de datos más grande necesitemos un servidor más potente, podemos distribuir la base de datos en varios servidores que funcionen simultáneamente.
@@ -23,14 +21,11 @@ Para intentar solucionar esos problemas, apareció otro tipo de bases de datos: 
 
 El tipo de bases de datos con estructuras fijas es el que mejor se adapta a nuestros requisitos de gestión de información: almacenar diferentes proyectos, tareas de dichos proyectos, miembros de un equipo asignados a esas tareas; todo eso en tablas que se puedan combinar fácilmente para obtener la información de una forma más completa. Además, esta aplicación es una aplicación web orientada a ser desplegada en la nube, la escalabilidad de la base de datos debería ser acorde a la escalabilidad de la aplicación. En conclusión, al juntarse necesidad e innovación el tipo de base datos para el que se desarrollara esta aplicación de gestión será una base de datos NewSQL.
 
-
 # Procedimiento de realización
-
 Existen tres componentes principales: gestión de la base de datos, generación de los informes y generación de los gráficos. La aplicación es la que se encargará de agrupar esos componentes para que trabajen de forma conjunta.
-
-* Como ya se ha indicado se va a usar una base de datos NewSQL, concretamente [**VoltDB**](https://github.com/VoltDB/voltdb), que es un sistema de gestión de base de datos relacional NewSQL, como ventaja cuenta con que además de tener licencia libre cuenta con una gran cantidad de [documentación en su página web](https://docs.voltdb.com/).
-* Para generar los informes con un formato estandarizado se generarán archivos PDF mediante plantillas **LaTeX** con la información que se recupere de la base de datos. Estos PDFs serán generados con la aplicación [**TeX Live**](http://www.tug.org/texlive/), la distribución por defecto de varias distribuciones GNU/Linux como Ubuntu, Debian o Fedora.
-* Los gráficos que se generen, que pueden ser incluidos en los informes o ser obtenidos de forma independiente, se generarán mediante scripts en lenguaje [**R**](https://www.r-project.org/), un software principalmente para análisis estadístico, pero cuyo uso se está extendido bastante en campos de la ciencias de la computación como puede ser la minería de datos; aunque en este aplicación solo está previsto usarlo mediante la librería **ggplot2** para la generación de gráficos debido al acabado profesional de los mismos.
+- Como ya se ha indicado se va a usar una base de datos NewSQL, concretamente [**VoltDB**](https://github.com/VoltDB/voltdb), que es un sistema de gestión de base de datos relacional NewSQL, como ventaja cuenta con que además de tener licencia libre cuenta con una gran cantidad de [documentación en su página web](https://docs.voltdb.com/).
+- Para generar los informes con un formato estandarizado se generarán archivos PDF mediante plantillas **LaTeX** con la información que se recupere de la base de datos. Estos PDFs serán generados con la aplicación [**TeX Live**](http://www.tug.org/texlive/), la distribución por defecto de varias distribuciones GNU/Linux como Ubuntu, Debian o Fedora.
+- Los gráficos que se generen, que pueden ser incluidos en los informes o ser obtenidos de forma independiente, se generarán mediante scripts en lenguaje [**R**](https://www.r-project.org/), un software principalmente para análisis estadístico, pero cuyo uso se está extendido bastante en campos de la ciencias de la computación como puede ser la minería de datos; aunque en este aplicación solo está previsto usarlo mediante la librería **ggplot2** para la generación de gráficos debido al acabado profesional de los mismos.
 
 La aplicación que gestione todo esto es una aplicación web dirigida a la computación en la nube para cuyo desarrollo se usará [**Node.js**](https://github.com/nodejs) (un entorno multiplataforma basado en JavaScript) con un funcionamiento asíncrono y una programación dirigida a eventos, lo que hace que se consiga un gran rendimiento en aplicaciones web además de tener una gran compatibilidad al encontrarse JavaScript en la práctica totalidad de navegadores web. Para las operaciones con la base de datos disponemos de [**este cliente**](https://github.com/VoltDB/voltdb-client-nodejs) creado por los propios desarrolladores de VoltDB, que además también se puede [**instalar desde NPM** ](https://www.npmjs.com/package/voltjs). En el caso de TeX Live el paquete [**latex**](https://www.npmjs.com/package/latex) nos permitirá ejecutar su funcionalidad desde la aplicación, y para R haremos la ejecución de los scripts directamente desde la aplicación.
 
@@ -41,18 +36,16 @@ Para seguir una metodología de desarrollo continuo **DevOps** se va a emplear u
 Por último, la aplicación estará preparada para desplegarse en un PaaS como [**Azure**](https://github.com/azure). También se realizará un provisionamiento de software automático con [**Ansible**](https://github.com/ansible/ansible) para instalarle todos los recursos software y efectuar todas las configuraciones necesarias; y un despliegue automático para instalar o actualizar la aplicación en el servidor y probar sus funcionalidades, para eso se puede usar [**Flightplan**](https://github.com/pstadler/flightplan), que es también un paquete disponible para Node.js.
 
 En cuanto a los [hitos](https://github.com/Gescosolution/Gesco-DatabaseManagement/milestones) que se han creado para agrupar todas las tareas del proyecto que se van a ir desarrollando en las diferentes fases son los siguientes:
-
-* **Definición estructura proyecto**: explicación del proyecto en su estado inicial.
-* **Instalación herramientas desarrollo**: puesta en marcha de Node.js y el resto de utilidades que se van a utilizar para desarrollar el proyecto.
-* **Desarrollo gestión base de datos**: parte de la funcionalidad relacionada con el acceso y la recuperación de datos desde la base de datos.
-* **Desarrollo generación PDF**: parte de la funcionalidad relacionada con la generación de los informes en PDF mediante plantillas LaTeX.
-* **Desarrollo generación gráficos**: parte de la funcionalidad relacionada con la generación de los gráficos mediante script en R.
-* **Creación entorno pruebas**: primeras pruebas unitarias, prueba de cobertura inicial y configuración de la integración continua.
-* **Despliegue aplicación**: creación y configuración de las infraestruturas virtuales en las que se va a instalar la aplicación además del despliegue de la aplicación haciendo uso de las mismas.
-* **Documentación**: documentación de la instalación y funcionalidad de la aplicación.
+- **Definición estructura proyecto**: explicación del proyecto en su estado inicial.
+- **Instalación herramientas desarrollo**: puesta en marcha de Node.js y el resto de utilidades que se van a utilizar para desarrollar el proyecto.
+- **Desarrollo gestión base de datos**: parte de la funcionalidad relacionada con el acceso y la recuperación de datos desde la base de datos.
+- **Desarrollo generación PDF**: parte de la funcionalidad relacionada con la generación de los informes en PDF mediante plantillas LaTeX.
+- **Desarrollo generación gráficos**: parte de la funcionalidad relacionada con la generación de los gráficos mediante script en R.
+- **Creación entorno pruebas**: primeras pruebas unitarias, prueba de cobertura inicial y configuración de la integración continua.
+- **Despliegue aplicación**: creación y configuración de las infraestruturas virtuales en las que se va a instalar la aplicación además del despliegue de la aplicación haciendo uso de las mismas.
+- **Documentación**: documentación de la instalación y funcionalidad de la aplicación.
 
 Además, están creados los primeros temas para las [tareas más inminentes](https://github.com/Gescosolution/Gesco-DatabaseManagement/issues), aunque seguramente crecerán en número en cuanto comience el desarrollo.
 
 # Relación con la asignatura
-
 La principal relación del proyecto con la asignatura es que como se ha descrito en el apartado anterior, se van a poner en práctica diferentes herramientas que se suelen usar en un desarrollo DevOps y que además iremos viendo durante el temario de la asignatura; estas herramientas son: pruebas unitarias para un desarrollo basado en tests, integración continua, provisionamiento software y despliegue automático. Todo esto hace que de inicio este proyecto cumpla con todos los aspectos necesarios para ser evaluable durante todas las prácticas de la asignatura.

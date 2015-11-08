@@ -32,8 +32,12 @@ var http = require('http');
 var logger = require('morgan');
 var path = require('path');
 
+var voltdb = require('./models/volt')
+
 // Rutas
 var index = require('./routes/index');
+var graficos = require('./routes/graficos');
+var informes = require('./routes/informes');
 
 // Crea aplicación web con Express
 var app = express();
@@ -52,40 +56,44 @@ app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(logger('dev'));
 // Parseadores
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 //Manejador de enrutado
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Funcionalidad
 app.use('/', index);
+app.use('/graficos', graficos);
+app.use('/informes', informes);
 
 // Captura errores 404 y los reenvia al manejador de errores
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
 // Manejador de errores:
 // - Modo desarrollo -> imprime mensajes en la pila de errores
 // - Modo producción -> no imprime los mensajes de error
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-} else {
-app.use(function(err, req, res, next) {
+  app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
-        message: err.message,
-        error: {}
+      message: err.message,
+      error: err
     });
-});
+  });
+} else {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: {}
+    });
+  });
 }
 
 // Creación del servidor
@@ -117,6 +125,7 @@ function onError(error) {
 // Escuchador de eventos de peticiones al servidor HTTP
 function onListening() {
   debug('Servidor Express escuchando localmente en el puerto ' + server.address().port);
+  voltdb.ejecutar();
 }
 
 module.exports = app;
