@@ -29,7 +29,7 @@ var should = require("should");
 
 // Módulo de la aplicación
 var app = require(__dirname + "/../app");
-var voltdb = require(__dirname + "/../models/volt");
+var voltdb = require(__dirname + "/../lib/volt");
 
 // Método para parsear archivos JSON a objetos JS
 var cargar = function(archivo) {

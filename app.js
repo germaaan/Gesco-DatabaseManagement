@@ -32,7 +32,7 @@ var http = require('http');
 var logger = require('morgan');
 var path = require('path');
 
-var voltdb = require('./models/volt');
+var voltdb = require('./lib/volt');
 
 // Rutas
 var index = require('./routes/index');
@@ -88,7 +88,6 @@ if (app.get('env') === 'development') {
     });
   });
 } else {
-  /*
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
@@ -96,7 +95,6 @@ if (app.get('env') === 'development') {
       error: {}
     });
   });
-  */
 }
 
 // Creación del servidor
@@ -107,24 +105,24 @@ server.on('listening', onListening);
 
 // (PENDIENTE DE TESTEAR)
 // Escuchador de eventos para eventos de error en el servidor HTTP
-// function onError(error) {
-//   if (error.syscall !== 'listen') {
-//     throw error;
-//   }
-//
-//   switch (error.code) {
-//     case 'EACCES':
-//       console.error('El puerto ' + port + ' requiere privilegios de administrador.');
-//       process.exit(1);
-//       break;
-//     case 'EADDRINUSE':
-//       console.error('El puerto ' + port + ' ya está en uso.');
-//       process.exit(1);
-//       break;
-//     default:
-//       throw error;
-//   }
-// }
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  switch (error.code) {
+    case 'EACCES':
+      console.error('El puerto ' + port + ' requiere privilegios de administrador.');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error('El puerto ' + port + ' ya está en uso.');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
 
 // Escuchador de eventos de peticiones al servidor HTTP
 function onListening() {

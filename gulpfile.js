@@ -34,8 +34,8 @@ var uglify = require('gulp-uglify');
 // var source = require('vinyl-source-stream');
 
 var json = ['./package.json', './bower.json'];
-var scripts = ['app.js', 'routes/*.js', 'models/*.js'];
-var todos = ['app.js', 'routes/*.js', 'models/*.js', 'test/test.js', 'public/js/src/*.js'];
+var scripts = ['app.js', 'routes/*.js', 'lib/*.js'];
+var todos = ['app.js', 'routes/*.js', 'lib/*.js', 'test/test.js', 'public/js/src/*.js'];
 var estilos = './public/style/scss/*.scss';
 
 gulp.task('install', function() {
