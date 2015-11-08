@@ -34,7 +34,8 @@ var uglify = require('gulp-uglify');
 // var source = require('vinyl-source-stream');
 
 var json = ['./package.json', './bower.json'];
-var scripts = ['app.js', 'models/*.js', 'public/js/src/*.js'];
+var scripts = ['app.js', 'routes/*.js', 'models/*.js'];
+var todos = ['app.js', 'routes/*.js', 'models/*.js', 'test/test.js', 'public/js/src/*.js'];
 var estilos = './public/style/scss/*.scss';
 
 gulp.task('install', function() {
@@ -53,7 +54,7 @@ gulp.task('install', function() {
 
 // Comprobación sintáctica del código
 gulp.task('lint', function() {
-  return gulp.src(scripts)
+  return gulp.src(todos)
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
@@ -84,12 +85,15 @@ gulp.task('watch', function() {
 // Ejecuta la aplicación con nodemon para reiniciarse ante cualquier cambio
 gulp.task('server', function() {
   nodemon({
-    script: 'app',
-    ext: 'js html css',
-    env: {
-      'DEBUG': 'Gesco-DatabaseManagement'
-    }
-  })
+      script: 'app',
+      ext: 'js html css',
+      env: {
+        'NODE_ENV': 'development'
+      }
+    })
+    .on('restart', function() {
+      console.log('Servidor reiniciado...')
+    })
 });
 
 // Tarea por defecto (métodos de generación)

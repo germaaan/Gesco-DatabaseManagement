@@ -28,7 +28,8 @@ var request = require("supertest");
 var should = require("should");
 
 // Módulo de la aplicación
-var app = require(__dirname + "/../app.js");
+var app = require(__dirname + "/../app");
+var voltdb = require(__dirname + "/../models/volt");
 
 // Método para parsear archivos JSON a objetos JS
 var cargar = function(archivo) {

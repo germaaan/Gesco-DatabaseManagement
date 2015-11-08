@@ -75,7 +75,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// (PENDIENTE DE TESTEAR)
+// (PENDIENTE DE TESTEAR PARCIALMENTE)
 // Manejador de errores:
 // - Modo desarrollo -> imprime mensajes en la pila de errores
 // - Modo producción -> no imprime los mensajes de error
@@ -88,6 +88,7 @@ if (app.get('env') === 'development') {
     });
   });
 } else {
+  /*
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
@@ -95,6 +96,7 @@ if (app.get('env') === 'development') {
       error: {}
     });
   });
+  */
 }
 
 // Creación del servidor
