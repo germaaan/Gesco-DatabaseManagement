@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Gesco-DatabaseManagement/models/volt.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">Gesco-DatabaseManagement/models/</a> volt.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">68.97% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>20/29</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">16.67% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">68.97% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>20/29</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">#!/usr/bin/env nodejs
+&nbsp;
+/*
+Gesco-DatabaseManagement. Módulo para la gestión de la información de la base de datos de la aplicación Gesco.
+Copyright (C) 2015 Germán Martínez Maldonado
+&nbsp;
+This file is part of Gesco-DatabaseManagement.
+&nbsp;
+Gesco-DatabaseManagement is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or any later version.
+&nbsp;
+Gesco-DatabaseManagement is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+&nbsp;
+You should have received a copy of the GNU General Public License
+along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+*/
+&nbsp;
+var util = require('util');
+var VoltConfiguration = require('voltjs/lib/configuration');
+var VoltClient = require('voltjs/lib/client');
+var VoltConstants = require('voltjs/lib/voltconstants');
+var VoltProcedure = require('voltjs/lib/query');
+&nbsp;
+var insercion = new VoltProcedure('Insercion', ['string']);
+&nbsp;
+var config = new VoltConfiguration();
+config.host = "gesco.cloudapp.net";
+config.messageQueueSize = 10;
+&nbsp;
+var cliente = new VoltClient([config]);
+&nbsp;
+<span class="fstat-no" title="function not covered" >function eventListener(code, event, message) {</span>
+<span class="cstat-no" title="statement not covered" >  util.log(util.format('Evento %s\tCódigo: %d\tMensaje: %s', event, code, message));</span>
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function getResultado(code, event, results) {</span>
+<span class="cstat-no" title="statement not covered" >  if (code == VoltConstants.STATUS_CODES.SUCCESS) {</span>
+<span class="cstat-no" title="statement not covered" >    util.log('Resultado: ' + results.statusString);</span>
+  } else {
+<span class="cstat-no" title="statement not covered" >    util.log("Error al ejecutar la consulta.");</span>
+  }
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function consultaInsercion() {</span>
+<span class="cstat-no" title="statement not covered" >  var query = insercion.getQuery();</span>
+<span class="cstat-no" title="statement not covered" >  query.setParameters(["Hola mundo"]);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  cliente.callProcedure(query, getResultado);</span>
+}
+&nbsp;
+exports.ejecutar = function() {
+  cliente.on(VoltConstants.SESSION_EVENT.CONNECTION, eventListener);
+  cliente.on(VoltConstants.SESSION_EVENT.CONNECTION_ERROR, eventListener);
+  cliente.on(VoltConstants.SESSION_EVENT.QUERY_RESPONSE_ERROR, eventListener);
+  cliente.on(VoltConstants.SESSION_EVENT.QUERY_DISPATCH_ERROR, eventListener);
+  cliente.on(VoltConstants.SESSION_EVENT.FATAL_ERROR, eventListener);
+&nbsp;
+  cliente.connect(<span class="fstat-no" title="function not covered" >function startup(code, event, results) {</span>
+<span class="cstat-no" title="statement not covered" >    util.log('Conexión a base de datos VoltDB realizada correctamente...');</span>
+    // consultaInsercion();
+  }, <span class="fstat-no" title="function not covered" >function loginError(code, event, results) {</span>
+<span class="cstat-no" title="statement not covered" >    util.log('Error al conectar a la base de datos VoltDB.');</span>
+  });
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Nov 08 2015 13:25:26 GMT+0100 (CET)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
