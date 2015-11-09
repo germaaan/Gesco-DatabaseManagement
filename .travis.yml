@@ -27,6 +27,5 @@ node_js:
   - "0.10"
 
 # Dependencias que es necesario instalar
-install:
+before_install:
   - "sudo apt-get install texlive"
-  - "npm install -g gulp"
