@@ -27,8 +27,9 @@ var fs = require("fs");
 var request = require("supertest");
 var should = require("should");
 
-// Módulo de la aplicación
+// Módulos de la aplicación
 var app = require(__dirname + "/../app");
+var volt = require(__dirname + "/../lib/volt");
 
 // Método para parsear archivos JSON a objetos JS
 var cargar = function(archivo) {
@@ -46,8 +47,8 @@ var cargar = function(archivo) {
 var enlaces = cargar(__dirname + "/../test/enlaces.json");
 
 // Enlaces a comprobar
-describe('Archivo de enlaces', function(){
-  it('Cargado', function(){
+describe('Archivo de enlaces', function() {
+  it('Cargado', function() {
     should(enlaces).not.be.null();
   });
   it('Correcto', function() {
@@ -60,8 +61,27 @@ describe('Archivo de enlaces', function(){
   });
 });
 
-// Prueba de acceso
-describe('Prueba de acceso', function() {
+// Prueba de acceso a la base de datos
+describe('Prueba de acceso a la base de datos', function() {
+  it("Base de datos externa funcionando", function(done) {
+    request('http://gesco.cloudapp.net:8080/api/1.0')
+      .get("/?Procedure=@SystemInformation")
+      .expect(200)
+      .end(function(err, res) {
+        if (err) {
+          throw err;
+        }
+        done();
+      });
+  });
+  it("Acceso a la base de datos desde la aplicación", function(done) {
+    should(volt.ejecutar()).be.ok;
+    done();
+  });
+});
+
+// Prueba de acceso a la página
+describe('Prueba de acceso a la página', function() {
   _.each(enlaces, function(valor) {
     it(valor.nombre, function(done) {
       request(app)
@@ -74,6 +94,17 @@ describe('Prueba de acceso', function() {
           done();
         });
     });
+  });
+  it("Base de datos externa funcionando", function(done) {
+    request('http://gesco.cloudapp.net:8080/api/1.0')
+      .get("/?Procedure=@SystemInformation")
+      .expect(200)
+      .end(function(err, res) {
+        if (err) {
+          throw err;
+        }
+        done();
+      });
   });
   it("Página de error", function(done) {
     request(app)
