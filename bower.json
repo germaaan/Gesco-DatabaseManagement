@@ -5,7 +5,7 @@
     "Germán Martínez Maldonado <germaaan@gmail.com>"
   ],
   "description": "Módulo para la gestión de la información de la base de datos de la aplicación Gesco.",
-  "main": "./bin/www",
+  "main": "app.js",
   "license": "GPL-2.0",
   "private": false,
   "dependencies": {

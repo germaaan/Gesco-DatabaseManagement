@@ -23,6 +23,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 var gulp = require('gulp');
 
 var concat = require('gulp-concat');
+var docco = require("gulp-docco");
 var install = require('gulp-install');
 var jshint = require('gulp-jshint');
 var nodemon = require('gulp-nodemon');
@@ -31,9 +32,11 @@ var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 
 var json = ['./package.json', './bower.json'];
-var scripts = ['app.js', 'routes/*.js', 'test/test.js', 'public/js/*.js'];
-var estilos = './public/style/scss/*.scss';
+var main = ['app.js', 'routes/*.js'];
+var all = ['app.js', 'routes/*.js', 'lib/*.js', 'test/test.js', 'public/js/*.js'];
+var style = './public/style/scss/*.scss';
 
+// Instala todos los paquetes necesarios con NPM y Bower
 gulp.task('install', function() {
   return gulp.src(json)
     .pipe(install());
@@ -41,38 +44,45 @@ gulp.task('install', function() {
 
 // Comprobación sintáctica del código
 gulp.task('lint', function() {
-  return gulp.src(scripts)
+  return gulp.src(all)
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
 
 // Compila los scripts de las hojas de estilo
 gulp.task('sass', function() {
-  gulp.src(estilos)
+  gulp.src(style)
     .pipe(sass())
     .pipe(gulp.dest('./public/style/css'));
 });
 
 // Concatena y minifica los archivos JS
-gulp.task('scripts', function() {
-  return gulp.src(scripts)
-    .pipe(concat('all.js'))
-    .pipe(gulp.dest('dist'))
-    .pipe(rename('all.min.js'))
-    //.pipe(uglify())
-    .pipe(gulp.dest('dist'));
+gulp.task('build', function() {
+  return gulp.src(main)
+    .pipe(concat('app.all.js'))
+    .pipe(gulp.dest('./'))
+    .pipe(rename('app.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./'));
+});
+
+// Genera documentación
+gulp.task('doc', function() {
+  return gulp.src(all)
+    .pipe(docco())
+    .pipe(gulp.dest('./doc'));
 });
 
 // Observa los archivos pendiente de cambios
 gulp.task('watch', function() {
-  gulp.watch(scripts, ['lint', 'scripts']);
-  gulp.watch(estilos, ['sass']);
+  gulp.watch(style, ['sass']);
+  gulp.watch(main, ['build']);
 });
 
 // Ejecuta la aplicación con nodemon para reiniciarse ante cualquier cambio
 gulp.task('server', function() {
   nodemon({
-      script: 'app',
+      script: 'app.min',
       ext: 'js html css',
       env: {
         'NODE_ENV': 'development'
@@ -84,4 +94,4 @@ gulp.task('server', function() {
 });
 
 // Tarea por defecto (métodos de generación)
-gulp.task('default', ['install', 'lint', 'sass', 'scripts']);
+gulp.task('default', ['install', 'sass', 'build', 'doc']);

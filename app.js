@@ -31,13 +31,14 @@ var favicon = require('serve-favicon');
 var http = require('http');
 var logger = require('morgan');
 var path = require('path');
+global.appRoot = path.resolve(__dirname);
 
-var volt = require('./lib/volt');
+var volt = require(__dirname + '/lib/volt');
 
 // Rutas
-var index = require('./routes/index');
-var graficos = require('./routes/graficos');
-var informes = require('./routes/informes');
+var index = require(__dirname + '/routes/index');
+var graficos = require(__dirname + '/routes/graficos');
+var informes = require(__dirname + '/routes/informes');
 
 // Crea aplicación web con Express
 var app = express();

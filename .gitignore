@@ -4,20 +4,17 @@ node_modules
 # Directorio de librerías instaladas
 public/lib
 
-# Directorio de componentes React
-public/js/react
-
-# Directorio de scripts JavaScript generados
-public/js/build
-
 # Directorio de hojas de estilo CSS generadas
 public/style/css
+
+# Directorio con la documentación
+doc
 
 # Directorio con el resultado de los tests de cobertura
 coverage
 
-# Directorio con el archivo concatenado
-dist
+# Versión concatenada y minificada de la aplicación
+app.all.js app.min.js
 
 # Logs y copias de seguridad
 *.log
