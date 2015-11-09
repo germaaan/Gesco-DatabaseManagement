@@ -8,7 +8,7 @@ var margin = {
   height = 500 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()
-  .rangeRoundBands([0, width], .1);
+  .rangeRoundBands([0, width], 0.1);
 
 var y = d3.scale.linear()
   .range([height, 0]);
@@ -28,7 +28,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("data.tsv", type, function(error, data) {
+d3.tsv("data/data.tsv", type, function(error, data) {
   if (error) throw error;
 
   x.domain(data.map(function(d) {
