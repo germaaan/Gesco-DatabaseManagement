@@ -14,7 +14,8 @@ doc
 coverage
 
 # Versión concatenada y minificada de la aplicación
-app.all.js app.min.js
+app.all.js
+app.min.js
 
 # Logs y copias de seguridad
 *.log
