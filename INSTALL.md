@@ -66,6 +66,8 @@ Comprobar mediante la [API](http://gesco.cloudapp.net:8080/api/1.0/?Procedure=@S
 sudo apt-get install texlive
 npm install -g gulp
 npm install
-
-gulp server
 ```
+
+- Si solo queremos construir la aplicación: `gulp`
+- Si queremos construir la aplicación y además ejecutarla: `gulp server`
+- Si queremos ejecutar los test de la aplicación: `gulp test`
