@@ -25,16 +25,30 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var docco = require("gulp-docco");
 var install = require('gulp-install');
+var istanbul = require('gulp-istanbul');
 var jshint = require('gulp-jshint');
+var mocha = require('gulp-mocha');
 var nodemon = require('gulp-nodemon');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 
-var json = ['./package.json', './bower.json'];
+var json = ['./bower.json'];
 var main = ['app.js', 'routes/*.js'];
+var test = ['app.js', 'routes/*.js', 'lib/*.js'];
 var all = ['app.js', 'routes/*.js', 'lib/*.js', 'test/test.js', 'public/js/*.js'];
 var style = './public/style/scss/*.scss';
+
+var testing = false;
+
+// Finaliza la ejecución una vez la tarea ha sido terminada
+gulp.on('stop', function() {
+  if (testing){
+  process.nextTick(function() {
+    process.exit(0);
+  });
+}
+});
 
 // Instala todos los paquetes necesarios con NPM y Bower
 gulp.task('install', function() {
@@ -49,6 +63,21 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('default'));
 });
 
+// Ejecución de test de cobertura
+gulp.task('pre-test', function() {
+  return gulp.src(test)
+    .pipe(istanbul())
+    .pipe(istanbul.hookRequire());
+});
+
+// Ejecución de test unitarios
+gulp.task('test', ['lint', 'pre-test'], function() {
+  testing = true;
+  return gulp.src(['test/test.js'])
+    .pipe(mocha())
+    .pipe(istanbul.writeReports())
+}, ['stop']);
+
 // Compila los scripts de las hojas de estilo
 gulp.task('sass', function() {
   gulp.src(style)
@@ -57,7 +86,7 @@ gulp.task('sass', function() {
 });
 
 // Concatena y minifica los archivos JS
-gulp.task('build', function() {
+gulp.task('js', function() {
   return gulp.src(main)
     .pipe(concat('app.all.js'))
     .pipe(gulp.dest('./'))
@@ -79,8 +108,11 @@ gulp.task('watch', function() {
   gulp.watch(main, ['build']);
 });
 
+// Tarea por defecto (métodos de generación)
+gulp.task('default', ['install', 'sass', 'js', 'doc']);
+
 // Ejecuta la aplicación con nodemon para reiniciarse ante cualquier cambio
-gulp.task('server', function() {
+gulp.task('server', ['default'], function() {
   nodemon({
       script: 'app.min',
       ext: 'js html css',
@@ -92,6 +124,3 @@ gulp.task('server', function() {
       console.log('Servidor reiniciado...')
     })
 });
-
-// Tarea por defecto (métodos de generación)
-gulp.task('default', ['install', 'sass', 'build', 'doc']);

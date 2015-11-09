@@ -46,6 +46,16 @@ var cargar = function(archivo) {
 
 var enlaces = cargar(__dirname + "/../test/enlaces.json");
 
+// Carga de la aplicación
+describe('Archivos cargados', function() {
+  it('Aplicación', function() {
+    should(app).not.be.null();
+  });
+  it('Interfaz conexión base de datos', function() {
+    should(volt).not.be.null();
+  });
+});
+
 // Enlaces a comprobar
 describe('Archivo de enlaces', function() {
   it('Cargado', function() {
@@ -75,7 +85,7 @@ describe('Prueba de acceso a la base de datos', function() {
       });
   });
   it("Acceso a la base de datos desde la aplicación", function(done) {
-    should(volt.ejecutar()).be.ok;
+    should.equal(volt.ejecutar(), undefined);
     done();
   });
 });

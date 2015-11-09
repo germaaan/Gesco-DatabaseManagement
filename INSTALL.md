@@ -67,10 +67,5 @@ sudo apt-get install texlive
 npm install -g gulp
 npm install
 
-# Opción 1
-gulp
 gulp server
-
-# Opción 2 (equivalente a ejecutar "gulp && gulp server")
-npm start
 ```
