@@ -23,6 +23,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 var express = require('express');
 var router = express.Router();
 
+var pdf = require(__dirname + "/../lib/informe");
+
+pdf.generar();
+
 // GET de la página de informes
 router.get('/', function(req, res) {
   res.render('informes', {

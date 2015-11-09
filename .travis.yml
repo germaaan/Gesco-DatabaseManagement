@@ -25,3 +25,6 @@ node_js:
   - "0.12"
   - "0.11"
   - "0.10"
+
+# Dependencias que es necesario instalar
+install: "apt-get install texlive"

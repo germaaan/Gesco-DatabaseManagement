@@ -25,4 +25,3 @@ dist
 
 # Archivos binarios temporales
 *.pdf
-public/scripts/*.png

@@ -33,7 +33,6 @@ var logger = require('morgan');
 var path = require('path');
 
 var volt = require('./lib/volt');
-//var d3 = require('d3');
 
 // Rutas
 var index = require('./routes/index');
