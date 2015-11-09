@@ -29,13 +29,9 @@ var nodemon = require('gulp-nodemon');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
-// var browserify = require('browserify');
-// var reactify = require('reactify');
-// var source = require('vinyl-source-stream');
 
 var json = ['./package.json', './bower.json'];
-var scripts = ['app.js', 'routes/*.js', 'lib/*.js'];
-var todos = ['app.js', 'routes/*.js', 'lib/*.js', 'test/test.js', 'public/js/src/*.js'];
+var scripts = ['app.js', 'routes/*.js', 'test/test.js', 'public/js/*.js'];
 var estilos = './public/style/scss/*.scss';
 
 gulp.task('install', function() {
@@ -43,18 +39,9 @@ gulp.task('install', function() {
     .pipe(install());
 });
 
-// Compila los componentes React
-// gulp.task('js', function() {
-//   browserify('./public/js/react/app.jsx')
-//     .transform(reactify)
-//     .bundle()
-//     .pipe(source('app.js'))
-//     .pipe(gulp.dest('./public/js/build/'));
-// });
-
 // Comprobación sintáctica del código
 gulp.task('lint', function() {
-  return gulp.src(todos)
+  return gulp.src(scripts)
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
