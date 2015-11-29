@@ -1,11 +1,6 @@
-[![node](https://img.shields.io/badge/node-0.12.7-blue.svg)](https://nodejs.org/en/)
-[![license](https://img.shields.io/badge/license-GPL%202.0-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
-[![Build Status](https://img.shields.io/travis/Gescosolution/Gesco-DatabaseManagement/master.svg?style=flat&label=Linux%20build)](https://travis-ci.org/Gescosolution/Gesco-DatabaseManagement)
+[![node](https://img.shields.io/badge/node-0.12.7-blue.svg)](https://nodejs.org/en/) [![license](https://img.shields.io/badge/license-GPL%202.0-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html) [![Build Status](https://img.shields.io/travis/Gescosolution/Gesco-DatabaseManagement/master.svg?style=flat&label=Linux%20build)](https://travis-ci.org/Gescosolution/Gesco-DatabaseManagement)
 
-[![Dependency Status](https://img.shields.io/david/Gescosolution/Gesco-DatabaseManagement.svg?style=flat)](https://david-dm.org/Gescosolution/Gesco-DatabaseManagement)
-[![devDependency Status](https://img.shields.io/david/dev/Gescosolution/Gesco-DatabaseManagement.svg?style=flat)](https://david-dm.org/Gescosolution/Gesco-DatabaseManagement#info=devDependencies)
-[![Coverage Status](https://img.shields.io/coveralls/Gescosolution/Gesco-DatabaseManagement.svg?style=flat)](https://coveralls.io/r/Gescosolution/Gesco-DatabaseManagement?branch=master)
-
+[![Dependency Status](https://img.shields.io/david/Gescosolution/Gesco-DatabaseManagement.svg?style=flat)](https://david-dm.org/Gescosolution/Gesco-DatabaseManagement) [![devDependency Status](https://img.shields.io/david/dev/Gescosolution/Gesco-DatabaseManagement.svg?style=flat)](https://david-dm.org/Gescosolution/Gesco-DatabaseManagement#info=devDependencies) [![Coverage Status](https://img.shields.io/coveralls/Gescosolution/Gesco-DatabaseManagement.svg?style=flat)](https://coveralls.io/r/Gescosolution/Gesco-DatabaseManagement?branch=master)
 
 # Gesco-DatabaseManagement
 Módulo para la gestión de información de la base de datos de la aplicación Gesco. Publicado bajo licencia **GNU GENERAL PUBLIC LICENSE Version 2**.
@@ -13,9 +8,6 @@ Módulo para la gestión de información de la base de datos de la aplicación G
 Este proyecto participa en el Certamen de Proyectos Libres de la Universidad de Granada 2015-2016 como parte del proyecto [Gesco](https://github.com/Gescosolution/Gesco). Las bases del mismo se encuentran [aquí](https://docs.google.com/document/d/16UsdUV_XXuPUh-Imz4PSgh-2ES_YaAJpZ8fNrbTVpMA/edit).
 
 Desarrollado por Germán Martínez Maldonado ([@germaaan](https://github.com/germaaan)).
-
-
-# Primer hito: Estructuración del proyecto
 
 ## Descripción
 Como parte de la aplicación Gesco, este módulo se encargará de toda la gestión de la información en la base de datos sobre los proyectos que se están llevando a cabo por la empresa del cliente. Esta puede información puede ser referida tanto a los diferentes proyectos que se están llevando a cabo en la empresa del cliente, como las tareas que es necesario gestionar para llevar a cabo esos proyectos o las personas que realizarán las tareas según se les vayan asignando.
@@ -60,39 +52,27 @@ Además, están creados los primeros temas para las [tareas más inminentes](htt
 ## Relación con la asignatura
 La principal relación del proyecto con la asignatura es que como se ha descrito en el apartado anterior, se van a poner en práctica diferentes herramientas que se suelen usar en un desarrollo DevOps y que además iremos viendo durante el temario de la asignatura; estas herramientas son: pruebas unitarias para un desarrollo basado en tests, integración continua, provisionamiento software y despliegue automático. Todo esto hace que de inicio este proyecto cumpla con todos los aspectos necesarios para ser evaluable durante todas las prácticas de la asignatura.
 
-
-# Segundo hito: Integración continua
-
 ## Sistema de construcción
-
 Como sistema de construcción se ha usado [**Gulp**](http://gulpjs.com/). Es un sistema que permite automatizar tareas de forma fácil, simplemente tenemos que añadirlas como `task` en el `gulpfile.js`; en el interior de estas tareas lo más usual es que las acciones a llevar a cabo se realicen mediante el método `pipe()`, que se basa en el módulo **Stream** de **Node.js** permitiendo una rápida ejecución.
 
 ## Paquete para comprobación sintácticas
-
 También comprobamos que el código escrito no tiene errores de sintaxis, estilo o estructural según estándares JavaScript definidos. Para esto todos nuestros script serán analizados por [**JSHint**](http://jshint.com/).
 
 ## Paquetes para test unitarios
-
 Para ejecutar test unitarios he escogido [**Mocha**](https://mochajs.org/), debido a que su funcionamiento es simple y flexible, permitiendo fácilmente incluso realizar pruebas sobre tareas asíncronas. Además se integra perfectamente con otras librerías como [**Should.js**](https://github.com/shouldjs/should.js), para realizar pruebas basadas en el comportamiento, y [**SuperTest**](https://github.com/visionmedia/supertest), para realizar pruebas de conexión. En función de lo que queramos testear, escribiremos los test con estas librerias y los ejecutaremos con con Mocha.
 
 Por otra parte para comprobar que tenemos una gran parte de nuestra aplicación testeada, usaremos [**Istanbul**](https://github.com/gotwarlost/istanbul) para conocer exactamente que porcentaje del total del código estamos cubriendo con nuestros tests unitarios. Como puntos a su favor destaca a parte de la fácil integración con Mocha, la detalla salida tanto por terminal como en los archivos HTML que genera.
 
 ## Sistema de integración continua
-
 El sistema de integración continua elegido es [**Travis CI**](https://travis-ci.org/), un sistema distribuido de integración continua. Ha sido el elegido por la gran cantidad de lenguajes para los que da soporte, la fácil configuración del mismo y su gran integración con GitHub; todo esto hace que introducir un sistema de integración continua en nuestro proyecto sea algo muy sencillo de llevar a cabo, pero consiguiendo un funcionamiento excepcional. Se puede configurar desde el archivo [`.travis.yml`](.travis.yml).
 
 ## Badges en el archivo README
-
 Utilizar badges es un sistema muy visual de hacer llegar determinada información sobre nuestro proyecto de forma llamativa. A parte del badge de [**Travis**](https://img.shields.io/travis/Gescosolution/Gesco-DatabaseManagement/master.svg?style=flat&label=Linux%20build) que indica que el estado actual de nuestro proyecto no presenta ningún error, se han incluido los badges de dos servicios más:
-
 - [**David**](https://david-dm.org/): un servicio que nos informa de si las dependencias de nuestra aplicación están actualizadas o necesitan serlo.
-
 - [**Coveralls**](https://coveralls.io/): este servicio nos dice también el porcentaje del código de nuestra aplicación que está cubierto basándose en la información obtenido de la comprobación realizada por Istanbul.
 
 ## Estado de la aplicación
-
 El estado actual de la aplicación es el siguiente:
-
 - Página de inicio temporal ([localhost:3000](https://dl.dropboxusercontent.com/s/o7lcltyqzitxmd9/index.png))
 - Página con un gráfico de barras generado cuando se carga la página ([localhost:3000/graficos](https://dl.dropboxusercontent.com/s/fc823d9w9r3kre5/grafico.png))
 - Página con un archivo PDF generado cuando se carga la página ([localhost:3000/informe](https://dl.dropboxusercontent.com/s/zowmg9b6e4lhwoz/informe.png))

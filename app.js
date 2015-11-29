@@ -33,8 +33,6 @@ var logger = require('morgan');
 var path = require('path');
 global.appRoot = path.resolve(__dirname);
 
-var volt = require(__dirname + '/lib/volt');
-
 // Rutas
 var index = require(__dirname + '/routes/index');
 var graficos = require(__dirname + '/routes/graficos');
@@ -93,7 +91,6 @@ server.on('listening', onListening);
 // Escuchador de eventos de peticiones al servidor HTTP
 function onListening() {
   debug('Servidor Express escuchando localmente en el puerto ' + server.address().port);
-  volt.ejecutar();
 }
 
 module.exports = app;

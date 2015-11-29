@@ -33,6 +33,7 @@
     "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec -r should && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "dependencies": {
+    "actordb": "0.10.1",
     "body-parser": "^1.14.1",
     "cookie-parser": "^1.4.0",
     "debug": "^2.2.0",
@@ -41,9 +42,7 @@
     "jade": "^1.11.0",
     "morgan": "^1.6.1",
     "request": "^2.65.0",
-    "serve-favicon": "^2.3.0",
-    "underscore": "^1.8.3",
-    "voltjs": "^0.2.0"
+    "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
     "bower": "^1.6.5",
@@ -62,9 +61,10 @@
     "istanbul": "^0.4.0",
     "mocha": "^2.3.3",
     "should": "^7.1.1",
-    "supertest": "^1.1.0"
+    "supertest": "^1.1.0",
+    "underscore": "^1.8.3"
   },
   "engines": {
-    "node": ">=0.12.7"
+    "node": "4.2.2"
   }
 }
