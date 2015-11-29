@@ -19,10 +19,10 @@ commit
 -- Introducimos los datos de prueba
 use actordb
 ACTOR consultor(tareas) CREATE;
-INSERT INTO tareas (nombre,frecuencia) VALUES ("Planificación",0.33579);
+INSERT INTO tareas (nombre,frecuencia) VALUES ("Atención cliente",0.01267);
 INSERT INTO tareas (nombre,frecuencia) VALUES ("Finanzas",0.31413);
 INSERT INTO tareas (nombre,frecuencia) VALUES ("Legal",0.16955);
+INSERT INTO tareas (nombre,frecuencia) VALUES ("Planificación",0.33579);
 INSERT INTO tareas (nombre,frecuencia) VALUES ("Publicidad",0.07251);
-INSERT INTO tareas (nombre,frecuencia) VALUES ("Atención cliente",0.01267);
 INSERT INTO tareas (nombre,frecuencia) VALUES ("Recursos humanos",0.09535);
 commit

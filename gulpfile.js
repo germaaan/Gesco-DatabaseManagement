@@ -43,11 +43,11 @@ var testing = false;
 
 // Finaliza la ejecución una vez la tarea ha sido terminada
 gulp.on('stop', function() {
-  if (testing){
-  process.nextTick(function() {
-    process.exit(0);
-  });
-}
+  if (testing) {
+    process.nextTick(function() {
+      process.exit(0);
+    });
+  }
 });
 
 // Instala todos los paquetes necesarios con NPM y Bower

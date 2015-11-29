@@ -27,6 +27,6 @@ node_js:
 
 # Dependencias que es necesario instalar
 before_install:
-  - "sudo apt-get install texlive"
+  - "sudo apt-get install texlive texlive-lang-spanish pgf"
   - "sudo ./installDB.sh"
   - "npm -g install gulp"

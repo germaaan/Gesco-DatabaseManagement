@@ -23,14 +23,24 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 var express = require('express');
 var router = express.Router();
 
-var pdf = require(appRoot + "/lib/generarInforme");
-
-pdf.generar();
+var client = require(appRoot + '/lib/client');
+var pdf = require(appRoot + '/lib/generarInforme');
 
 // GET de la página de informes
 router.get('/', function(req, res) {
   res.render('informes', {
     title: 'Gesco-DatabaseManagement: Informes'
+  });
+
+  client.connect(function(err, db) {
+    client.exec_sql("ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;", function(err, datos) {
+      client.close();
+      pdf.generar(data.rows);
+
+      res.render('informes', {
+        title: 'Gesco-DatabaseManagement: Informes'
+      });
+    });
   });
 });
 

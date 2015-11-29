@@ -36,7 +36,7 @@ router.get('/', function(req, res) {
       var stream = fs.createWriteStream(appRoot + '/public/data/data.tsv');
       stream.write("nombre\tfrecuencia\n");
       _.each(datos.rows, function(valor) {
-        stream.write(valor.nombre+"\t"+valor.frecuencia+"\n");
+        stream.write(valor.nombre + "\t" + valor.frecuencia + "\n");
       });
       stream.end();
 

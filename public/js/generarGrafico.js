@@ -78,10 +78,10 @@ d3.tsv("data/data.tsv", type, function(error, data) {
     .append("text")
     .attr("transform", "rotate(0)")
     .attr("x", 6)
-    .attr("dx", "48.5em")
+    .attr("dx", "51.5em")
     .attr("dy", "3.5em")
     .style("text-anchor", "end")
-    .text("Nombre");
+    .text("Nombres");
 
   // Agregamos a nuestro gráfico el eje Y
   svg.append("g")
@@ -91,9 +91,9 @@ d3.tsv("data/data.tsv", type, function(error, data) {
     .attr("transform", "rotate(-90)")
     .attr("y", 6)
     .attr("dy", "-5em")
-    .attr("dx", "-23em")
+    .attr("dx", "-20.5em")
     .style("text-anchor", "end")
-    .text("Frecuencia");
+    .text("Frecuencias");
 
   // Seleccinamos todas las barras del gráfico y las vamos añadiendo
   svg.selectAll(".bar")

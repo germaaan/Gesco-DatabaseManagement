@@ -1,5 +1,4 @@
 # Instrucciones para la instalación
-
 ## Node.js
 
 ```
@@ -11,7 +10,6 @@ sudo n 0.12.7
 ```
 
 ## Instrucciones para VoltDB en el servidor externo
-
 La instalación de VoltDB solo está comprobada en el sistema operativo Ubuntu 14.04.3 LTS, solo consiguiendo que funcione en una versión Server para máquinas virtuales de Microsoft Azure (b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_3-LTS-amd64-server-20151020-en-us-30GB) y una caja con la versión Cloud para Vagrant ([http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box](http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box)).
 
 ### Instalación
@@ -32,7 +30,6 @@ ant
 ```
 
 ### Ejecución
-
 En el directorio `voltdb/bin` crear el archivo `deployment.xml`:
 
 ```
