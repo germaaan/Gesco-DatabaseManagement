@@ -21,4 +21,15 @@
 extends layout
 
 block content
-	h1 Gesco-DatabaseManagement en construcción
+	script(src='/js/generarTabla.js')
+	script(type='text/javascript').
+		filasTabla(!{JSON.stringify(data)})
+
+	h2(style='text-align: center') Información de gestión
+	table#tareas.table.table-hover.text-center
+		thead
+			tr
+				th.col-sm-1.text-center Tarea
+				th.col-sm-1.text-center Frecuencia de ejecución
+			tbody
+				tr

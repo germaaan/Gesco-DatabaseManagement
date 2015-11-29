@@ -18,20 +18,10 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-// Dependencias
-var express = require('express');
-var router = express.Router();
-
-var pdf = require(appRoot + "/lib/generarInforme");
-
-pdf.generar();
-
-// GET de la página de informes
-router.get('/', function(req, res) {
-  res.render('informes', {
-    title: 'Gesco-DatabaseManagement: Informes'
+function filasTabla(data) {
+  $(document).ready(function() {
+    $.each(data, function(clave, valor) {
+      $('#tareas').append('<tr><td>' + valor.nombre + '</td><td>' + valor.frecuencia + '</td></tr>');
+    });
   });
-});
-
-module.exports = router;
+}

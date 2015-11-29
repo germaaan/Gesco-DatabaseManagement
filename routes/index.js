@@ -22,25 +22,18 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 // Dependencias
 var express = require('express');
 var router = express.Router();
-var ActorDB = require('actordb');
-var client = ActorDB.connectSingle({
-  host: '127.0.0.1',
-  port: 33306,
-  username: "usuario",
-  password: "usuario"
-});
+var client = require(appRoot + '/lib/client');
 
 // GET de la página principal
 router.get('/', function(req, res) {
   client.connect(function(err, db) {
-    client.exec_sql("ACTOR consultor(tareas) CREATE; SELECT * FROM ejecuciones;", function(err, data) {
+    client.exec_sql("ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;", function(err, datos) {
       client.close();
-      console.log(data);
+      res.render('index', {
+        title: 'Gesco-DatabaseManagement: Inicio',
+        data: datos.rows
+      });
     });
-  });
-
-  res.render('index', {
-    title: 'Gesco-DatabaseManagement: Inicio'
   });
 });
 
