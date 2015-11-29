@@ -1,1 +1,1 @@
-web: node app.min
+web: ./deploy.sh
