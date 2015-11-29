@@ -42,8 +42,8 @@ var informes = require(__dirname + '/routes/informes');
 var app = express();
 
 // Variables de entorno (puerto de escucha y dirección IP)
-app.set('port', process.env.PORT || 3000);
-app.set('ip', process.env.IP || '127.0.0.1');
+app.set('ip', process.env.IP || '0.0.0.0');
+app.set('port', process.env.PORT || 5000 || 3000);
 // Directorio con las plantillas
 app.set('views', path.join(__dirname, 'views'));
 // Motor de visualización
@@ -83,14 +83,10 @@ app.use(function(err, req, res, next) {
   });
 });
 
-// Creación del servidor
-var server = http.createServer(app);
-server.listen(app.get('port'));
-server.on('listening', onListening);
-
-// Escuchador de eventos de peticiones al servidor HTTP
-function onListening() {
-  debug('Servidor Express escuchando localmente en el puerto ' + server.address().port);
-}
+// Servidor escuchando dirección y puertos correspondientes
+app.listen(app.get('port'), app.get('ip'), function() {
+  console.log('Aplicación escuchando peticiones para la dirección ' + app.get('ip') +
+    ' en el puerto ' + app.get('port') + " ...");
+});
 
 module.exports = app;

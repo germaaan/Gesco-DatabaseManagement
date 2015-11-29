@@ -24,12 +24,14 @@ var gulp = require('gulp');
 
 var concat = require('gulp-concat');
 var docco = require("gulp-docco");
+var env = require('gulp-env');
 var install = require('gulp-install');
 var istanbul = require('gulp-istanbul');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
 var nodemon = require('gulp-nodemon');
 var rename = require('gulp-rename');
+var shell = require('gulp-shell');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 
@@ -111,16 +113,31 @@ gulp.task('watch', function() {
 // Tarea por defecto (métodos de generación)
 gulp.task('default', ['install', 'sass', 'js', 'doc']);
 
-// Ejecuta la aplicación con nodemon para reiniciarse ante cualquier cambio
-gulp.task('server', ['default'], function() {
+// Ejecuta la aplicación con nodemon en modo desarrollo
+gulp.task('dev', ['default'], function() {
   nodemon({
       script: 'app.min',
-      ext: 'js html css',
+      ext: 'js html',
       env: {
-        'NODE_ENV': 'development'
+        'NODE_ENV': 'development',
+        'PORT': 3000,
+        'IP': '127.0.0.1'
       }
     })
     .on('restart', function() {
       console.log('Servidor reiniciado...')
     })
 });
+
+
+gulp.task('setProduction', function() {
+  env({
+    vars: {
+      'NODE_ENV': 'production',
+      'PORT': 5000
+    }
+  });
+});
+
+// Ejecuta la aplicación en modo producción
+gulp.task('server', ['default', 'setProduction'], shell.task(['node app']));
