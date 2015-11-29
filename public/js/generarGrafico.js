@@ -21,7 +21,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 // Márgenes de encuadre del gráfico
 var margin = {
-  top: 50,
+  top: 0,
   right: 100,
   bottom: 50,
   left: 100
@@ -29,7 +29,7 @@ var margin = {
 
 // Ancho y alto del gráfico
 var width = 1200 - margin.left - margin.right;
-var height = 600 - margin.top - margin.bottom;
+var height = 525 - margin.top - margin.bottom;
 
 // Mapeamos los dominios de los ejes X e Y para obtener valores válidos
 var x = d3.scale.ordinal()
@@ -62,19 +62,26 @@ d3.tsv("data/data.tsv", type, function(error, data) {
 
   // Los valores correspondientes al eje X
   x.domain(data.map(function(d) {
-    return d.letter;
+    return d.nombre;
   }));
   // Los valores correspondientes al eje Y
   // (calculando además el valor máximo)
   y.domain([0, d3.max(data, function(d) {
-    return d.frequency;
+    return d.frecuencia;
   })]);
 
   // Agregamos a nuestro gráfico el eje X
   svg.append("g")
     .attr("class", "x axis")
     .attr("transform", "translate(0," + height + ")")
-    .call(xAxis);
+    .call(xAxis)
+    .append("text")
+    .attr("transform", "rotate(0)")
+    .attr("x", 6)
+    .attr("dx", "48.5em")
+    .attr("dy", "3.5em")
+    .style("text-anchor", "end")
+    .text("Nombre");
 
   // Agregamos a nuestro gráfico el eje Y
   svg.append("g")
@@ -83,9 +90,10 @@ d3.tsv("data/data.tsv", type, function(error, data) {
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("y", 6)
-    .attr("dy", ".71em")
+    .attr("dy", "-5em")
+    .attr("dx", "-23em")
     .style("text-anchor", "end")
-    .text("Frequency");
+    .text("Frecuencia");
 
   // Seleccinamos todas las barras del gráfico y las vamos añadiendo
   svg.selectAll(".bar")
@@ -93,18 +101,18 @@ d3.tsv("data/data.tsv", type, function(error, data) {
     .enter().append("rect")
     .attr("class", "bar")
     .attr("x", function(d) {
-      return x(d.letter);
+      return x(d.nombre);
     })
     .attr("width", x.rangeBand())
     .attr("y", function(d) {
-      return y(d.frequency);
+      return y(d.frecuencia);
     })
     .attr("height", function(d) {
-      return height - y(d.frequency);
+      return height - y(d.frecuencia);
     });
 });
 
 function type(d) {
-  d.frequency = +d.frequency;
+  d.frecuencia = +d.frecuencia;
   return d;
 }

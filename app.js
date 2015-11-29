@@ -40,7 +40,6 @@ var informes = require(__dirname + '/routes/informes');
 
 // Crea aplicación web con Express
 var app = express();
-app.locals._ = require('underscore');
 
 // Variables de entorno (puerto de escucha y dirección IP)
 app.set('port', process.env.PORT || 3000);
