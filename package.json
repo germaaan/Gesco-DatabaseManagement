@@ -28,6 +28,7 @@
     "test": "test"
   },
   "scripts": {
+    "postinstall": "gulp install && gulp bower",
     "dev": "gulp dev",
     "start": "gulp server",
     "test": "gulp test",
@@ -36,36 +37,39 @@
   "dependencies": {
     "actordb": "0.10.1",
     "body-parser": "1.14.1",
+    "bower": "1.6.5",
     "cookie-parser": "1.4.0",
     "debug": "2.2.0",
     "express": "4.13.3",
     "gammalatex": "0.0.8",
+    "gulp": "3.9.0",
+    "gulp-packages": "0.2.0",
+    "gulp-shell": "0.5.1",
     "jade": "1.11.0",
+    "lx-pdf": "0.1.2",
     "morgan": "1.6.1",
     "request": "2.65.0",
-    "serve-favicon": "2.3.0",
-    "underscore": "1.8.3"
+    "serve-favicon": "2.3.0"
   },
   "devDependencies": {
-    "bower": "1.6.5",
     "coveralls": "2.11.4",
-    "gulp": "3.9.0",
-    "gulp-concat": "2.6.0",
+    "gulp-concat": "^2.6.0",
     "gulp-docco": "0.0.4",
-    "gulp-env": "0.2.0",
-    "gulp-install": "0.6.0",
-    "gulp-istanbul": "0.10.2",
-    "gulp-jshint": "2.0.0",
-    "gulp-mocha": "2.1.3",
-    "gulp-nodemon": "2.0.4",
-    "gulp-rename": "1.2.2",
-    "gulp-sass": "2.1.0",
-    "gulp-shell": "0.5.1",
-    "gulp-uglify": "1.4.2",
+    "gulp-env": "^0.2.0",
+    "gulp-install": "^0.6.0",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-jshint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-nodemon": "^2.0.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.0",
+    "gulp-uglify": "^1.5.1",
     "istanbul": "0.4.0",
+    "jshint": "2.8.0",
     "mocha": "2.3.3",
     "should": "7.1.1",
-    "supertest": "1.1.0"
+    "supertest": "1.1.0",
+    "underscore": "1.8.3"
   },
   "engines": {
     "node": "4.2.2"

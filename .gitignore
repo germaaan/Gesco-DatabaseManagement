@@ -7,9 +7,6 @@ public/lib
 # Directorio de hojas de estilo CSS generadas
 public/style/css
 
-# Directorio con la documentación
-doc
-
 # Directorio con el resultado de los tests de cobertura
 coverage
 
@@ -24,3 +21,4 @@ app.min.js
 # Archivos binarios temporales
 *.pdf
 temp
+data.tsv

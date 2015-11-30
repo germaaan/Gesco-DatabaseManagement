@@ -28,6 +28,10 @@ var client = require(appRoot + '/database/client');
 
 // GET de la página de gráficos
 router.get('/', function(req, res) {
+  res.render('graficos', {
+    title: 'Gesco-DatabaseManagement: Graficos'
+  });
+
   client.connect(function(err, db) {
     client.exec_sql("ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;", function(err, datos) {
       client.close();
@@ -38,10 +42,6 @@ router.get('/', function(req, res) {
         stream.write(valor.nombre + "\t" + valor.frecuencia + "\n");
       });
       stream.end();
-
-      res.render('graficos', {
-        title: 'Gesco-DatabaseManagement: Graficos'
-      });
     });
   });
 });

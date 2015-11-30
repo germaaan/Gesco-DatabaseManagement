@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>generarGrafico.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>generarGrafico.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+Gesco-DatabaseManagement. Módulo para la gestión de la información de la base
+de datos de la aplicación Gesco. Copyright (C) 2015 Germán Martínez Maldonado
+
+This file is part of Gesco-DatabaseManagement.
+
+Gesco-DatabaseManagement is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or any later version.
+
+Gesco-DatabaseManagement is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
+*/</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Márgenes de encuadre del gráfico</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> margin = {
+  top: <span class="hljs-number">0</span>,
+  right: <span class="hljs-number">100</span>,
+  bottom: <span class="hljs-number">50</span>,
+  left: <span class="hljs-number">100</span>
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Ancho y alto del gráfico</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> width = <span class="hljs-number">1200</span> - margin.left - margin.right;
+<span class="hljs-keyword">var</span> height = <span class="hljs-number">525</span> - margin.top - margin.bottom;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Mapeamos los dominios de los ejes X e Y para obtener valores válidos</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> x = d3.scale.ordinal()
+  .rangeRoundBands([<span class="hljs-number">0</span>, width], <span class="hljs-number">0.1</span>);
+<span class="hljs-keyword">var</span> y = d3.scale.linear()
+  .range([height, <span class="hljs-number">0</span>]);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>El eje X está orientado al fondo de la página</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> xAxis = d3.svg.axis()
+  .scale(x)
+  .orient(<span class="hljs-string">"bottom"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>El eje Y estará orientado a la zona izquierda de la página
+Además, indicamos el número de marcas que va a tener dicho eje</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> yAxis = d3.svg.axis()
+  .scale(y)
+  .orient(<span class="hljs-string">"left"</span>)
+  .ticks(<span class="hljs-number">20</span>, <span class="hljs-string">"%"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Seleccionamos la zona donde vamos a añadir el gráfico</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> svg = d3.select(<span class="hljs-string">"body"</span>).append(<span class="hljs-string">"svg"</span>)
+  .attr(<span class="hljs-string">"width"</span>, width + margin.left + margin.right)
+  .attr(<span class="hljs-string">"height"</span>, height + margin.top + margin.bottom)
+  .append(<span class="hljs-string">"g"</span>)
+  .attr(<span class="hljs-string">"transform"</span>, <span class="hljs-string">"translate("</span> + margin.left + <span class="hljs-string">","</span> + margin.top + <span class="hljs-string">")"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Parseamos el archivo TSV con los valores del gráfico</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>d3.tsv(<span class="hljs-string">"data/data.tsv"</span>, type, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, data</span>) </span>{
+  <span class="hljs-keyword">if</span> (error) <span class="hljs-keyword">throw</span> error;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Los valores correspondientes al eje X</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  x.domain(data.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">d</span>) </span>{
+    <span class="hljs-keyword">return</span> d.nombre;
+  }));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Los valores correspondientes al eje Y
+(calculando además el valor máximo)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  y.domain([<span class="hljs-number">0</span>, d3.max(data, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">d</span>) </span>{
+    <span class="hljs-keyword">return</span> d.frecuencia;
+  })]);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Agregamos a nuestro gráfico el eje X</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  svg.append(<span class="hljs-string">"g"</span>)
+    .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"x axis"</span>)
+    .attr(<span class="hljs-string">"transform"</span>, <span class="hljs-string">"translate(0,"</span> + height + <span class="hljs-string">")"</span>)
+    .call(xAxis)
+    .append(<span class="hljs-string">"text"</span>)
+    .attr(<span class="hljs-string">"transform"</span>, <span class="hljs-string">"rotate(0)"</span>)
+    .attr(<span class="hljs-string">"x"</span>, <span class="hljs-number">6</span>)
+    .attr(<span class="hljs-string">"dx"</span>, <span class="hljs-string">"51.5em"</span>)
+    .attr(<span class="hljs-string">"dy"</span>, <span class="hljs-string">"3.5em"</span>)
+    .style(<span class="hljs-string">"text-anchor"</span>, <span class="hljs-string">"end"</span>)
+    .text(<span class="hljs-string">"Nombres"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Agregamos a nuestro gráfico el eje Y</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  svg.append(<span class="hljs-string">"g"</span>)
+    .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"y axis"</span>)
+    .call(yAxis)
+    .append(<span class="hljs-string">"text"</span>)
+    .attr(<span class="hljs-string">"transform"</span>, <span class="hljs-string">"rotate(-90)"</span>)
+    .attr(<span class="hljs-string">"y"</span>, <span class="hljs-number">6</span>)
+    .attr(<span class="hljs-string">"dy"</span>, <span class="hljs-string">"-5em"</span>)
+    .attr(<span class="hljs-string">"dx"</span>, <span class="hljs-string">"-20.5em"</span>)
+    .style(<span class="hljs-string">"text-anchor"</span>, <span class="hljs-string">"end"</span>)
+    .text(<span class="hljs-string">"Frecuencias"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Seleccinamos todas las barras del gráfico y las vamos añadiendo</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  svg.selectAll(<span class="hljs-string">".bar"</span>)
+    .data(data)
+    .enter().append(<span class="hljs-string">"rect"</span>)
+    .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"bar"</span>)
+    .attr(<span class="hljs-string">"x"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">d</span>) </span>{
+      <span class="hljs-keyword">return</span> x(d.nombre);
+    })
+    .attr(<span class="hljs-string">"width"</span>, x.rangeBand())
+    .attr(<span class="hljs-string">"y"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">d</span>) </span>{
+      <span class="hljs-keyword">return</span> y(d.frecuencia);
+    })
+    .attr(<span class="hljs-string">"height"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">d</span>) </span>{
+      <span class="hljs-keyword">return</span> height - y(d.frecuencia);
+    });
+});
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">type</span>(<span class="hljs-params">d</span>) </span>{
+  d.frecuencia = +d.frecuencia;
+  <span class="hljs-keyword">return</span> d;
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

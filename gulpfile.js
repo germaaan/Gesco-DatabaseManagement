@@ -21,21 +21,23 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 // Dependencias
 var gulp = require('gulp');
-
-var concat = require('gulp-concat');
-var docco = require("gulp-docco");
-var env = require('gulp-env');
-var install = require('gulp-install');
-var istanbul = require('gulp-istanbul');
-var jshint = require('gulp-jshint');
-var mocha = require('gulp-mocha');
-var nodemon = require('gulp-nodemon');
-var rename = require('gulp-rename');
 var shell = require('gulp-shell');
-var sass = require('gulp-sass');
-var uglify = require('gulp-uglify');
 
-var json = ['./bower.json'];
+var pkg = require('gulp-packages')(gulp, [
+  'concat',
+  'docco',
+  'env',
+  'install',
+  'istanbul',
+  'jshint',
+  'mocha',
+  'nodemon',
+  'rename',
+  'sass',
+  'uglify'
+]);
+
+var json = './bower.json';
 var main = ['app.js', 'routes/*.js'];
 var test = ['app.js', 'routes/*.js', 'lib/*.js'];
 var all = ['app.js', 'routes/*.js', 'lib/*.js', 'test/test.js', 'public/js/*.js'];
@@ -43,7 +45,7 @@ var style = './public/style/scss/*.scss';
 
 var testing = false;
 
-// Finaliza la ejecución una vez la tarea ha sido terminada
+// // Finaliza la ejecución una vez la tarea ha sido terminada
 gulp.on('stop', function() {
   if (testing) {
     process.nextTick(function() {
@@ -53,54 +55,54 @@ gulp.on('stop', function() {
 });
 
 // Instala todos los paquetes necesarios con NPM y Bower
-gulp.task('install', function() {
+gulp.task('bower', function() {
   return gulp.src(json)
-    .pipe(install());
+    .pipe(pkg.install());
 });
 
 // Comprobación sintáctica del código
 gulp.task('lint', function() {
   return gulp.src(all)
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'));
+    .pipe(pkg.jshint())
+    .pipe(pkg.jshint.reporter('default'));
 });
 
 // Ejecución de test de cobertura
 gulp.task('pre-test', function() {
   return gulp.src(test)
-    .pipe(istanbul())
-    .pipe(istanbul.hookRequire());
+    .pipe(pkg.istanbul())
+    .pipe(pkg.istanbul.hookRequire());
 });
 
 // Ejecución de test unitarios
 gulp.task('test', ['lint', 'pre-test'], function() {
   testing = true;
   return gulp.src(['test/test.js'])
-    .pipe(mocha())
-    .pipe(istanbul.writeReports())
+    .pipe(pkg.mocha())
+    .pipe(pkg.istanbul.writeReports())
 }, ['stop']);
 
 // Compila los scripts de las hojas de estilo
 gulp.task('sass', function() {
   gulp.src(style)
-    .pipe(sass())
+    .pipe(pkg.sass())
     .pipe(gulp.dest('./public/style/css'));
 });
 
 // Concatena y minifica los archivos JS
 gulp.task('js', function() {
   return gulp.src(main)
-    .pipe(concat('app.all.js'))
+    .pipe(pkg.concat('app.all.js'))
     .pipe(gulp.dest('./'))
-    .pipe(rename('app.min.js'))
-    .pipe(uglify())
+    .pipe(pkg.rename('app.min.js'))
+    .pipe(pkg.uglify())
     .pipe(gulp.dest('./'));
 });
 
 // Genera documentación
 gulp.task('doc', function() {
   return gulp.src(all)
-    .pipe(docco())
+    .pipe(pkg.docco())
     .pipe(gulp.dest('./doc'));
 });
 
@@ -111,11 +113,11 @@ gulp.task('watch', function() {
 });
 
 // Tarea por defecto (métodos de generación)
-gulp.task('default', ['install', 'sass', 'js', 'doc']);
+gulp.task('default', ['bower', 'sass', 'js', 'doc']);
 
 // Ejecuta la aplicación con nodemon en modo desarrollo
 gulp.task('dev', ['default'], function() {
-  nodemon({
+  pkg.nodemon({
       script: 'app.min',
       ext: 'js html',
       env: {
@@ -129,9 +131,8 @@ gulp.task('dev', ['default'], function() {
     })
 });
 
-
 gulp.task('setProduction', function() {
-  env({
+  pkg.env({
     vars: {
       'NODE_ENV': 'production',
       'PORT': 5000

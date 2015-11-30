@@ -29,6 +29,7 @@ var should = require("should");
 
 // Módulos de la aplicación
 var app = require(__dirname + "/../app");
+var informe = require(__dirname + "/../lib/generarInforme");
 
 // Método para parsear archivos JSON a objetos JS
 var cargar = function(archivo) {
@@ -45,19 +46,31 @@ var cargar = function(archivo) {
 
 var enlaces = cargar(__dirname + "/../test/enlaces.json");
 
+var datos = {
+  nombre: "prueba",
+  frecuencia: 0.0
+};
+
 // Carga de la aplicación
-describe('Archivos cargados', function() {
-  it('Aplicación', function() {
+describe('Aplicación', function() {
+  it('Archivo cargado', function() {
     should(app).not.be.null();
   });
 });
 
+// Generar informe
+describe('Informes', function() {
+  it('Generación', function() {
+    should(informe.generar(datos)).be.undefined();
+  });
+});
+
 // Enlaces a comprobar
-describe('Archivo de enlaces', function() {
-  it('Cargado', function() {
+describe('Enlaces', function() {
+  it('Archivo cargado', function() {
     should(enlaces).not.be.null();
   });
-  it('Correcto', function() {
+  it('Archivo correcto', function() {
     _.each(enlaces, function(valor) {
       var size = _.size(valor);
       should(size).be.exactly(2);
@@ -68,21 +81,21 @@ describe('Archivo de enlaces', function() {
 });
 
 // Prueba de acceso a la página
-describe('Prueba de acceso a la página', function() {
+describe('Acceso a la página', function() {
+  this.timeout(5000);
   _.each(enlaces, function(valor) {
     it(valor.nombre, function(done) {
       request(app)
         .get(valor.ruta)
+        .expect("Content-Type", "text/html; charset=utf-8")
         .expect(200)
         .end(function(err, res) {
-          if (err) {
-            throw err;
-          }
+          if (err) return done(err);
           done();
         });
     });
   });
-  it("Página de error", function(done) {
+  it("Error 404", function(done) {
     request(app)
       .get("/foo")
       .expect(404)

@@ -24,7 +24,7 @@ var express = require('express');
 var router = express.Router();
 
 var client = require(appRoot + '/database/client');
-var pdf = require(appRoot + '/lib/generarInforme');
+var informe = require(appRoot + '/lib/generarInforme');
 
 // GET de la página de informes
 router.get('/', function(req, res) {
@@ -35,11 +35,7 @@ router.get('/', function(req, res) {
   client.connect(function(err, db) {
     client.exec_sql("ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;", function(err, datos) {
       client.close();
-      pdf.generar(data.rows);
-
-      res.render('informes', {
-        title: 'Gesco-DatabaseManagement: Informes'
-      });
+      informe.generar(data.rows);
     });
   });
 });
