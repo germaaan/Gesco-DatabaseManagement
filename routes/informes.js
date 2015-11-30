@@ -23,7 +23,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 var express = require('express');
 var router = express.Router();
 
-var client = require(appRoot + '/lib/client');
+var client = require(appRoot + '/database/client');
 var pdf = require(appRoot + '/lib/generarInforme');
 
 // GET de la página de informes

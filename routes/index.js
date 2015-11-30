@@ -22,7 +22,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 // Dependencias
 var express = require('express');
 var router = express.Router();
-var client = require(appRoot + '/lib/client');
+var client = require(appRoot + '/database/client');
 
 // GET de la página principal
 router.get('/', function(req, res) {

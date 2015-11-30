@@ -24,8 +24,7 @@ var express = require('express');
 var _ = require('underscore');
 var fs = require('fs');
 var router = express.Router();
-var client = require(appRoot + '/lib/client');
-
+var client = require(appRoot + '/database/client');
 
 // GET de la página de gráficos
 router.get('/', function(req, res) {

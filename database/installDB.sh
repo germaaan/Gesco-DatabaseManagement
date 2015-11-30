@@ -10,5 +10,5 @@ else
   echo -e "\n\nArrancando ActorDB...\n"
   actordb start
   echo -e "\n\nInicializando ActorDB...\n"
-  actordb_console -f conf/init.sql
+  actordb_console -f init.sql
 fi
