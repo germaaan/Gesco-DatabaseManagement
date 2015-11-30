@@ -28,7 +28,7 @@
     "test": "test"
   },
   "scripts": {
-    "postinstall": "gulp install && gulp bower",
+    "postinstall": "bower install",
     "dev": "gulp dev",
     "start": "gulp server",
     "test": "gulp test",
