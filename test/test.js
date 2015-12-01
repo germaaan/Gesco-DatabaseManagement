@@ -95,7 +95,7 @@ describe('Enlaces', function() {
 
 // Prueba de acceso a la página
 describe('Acceso a la página', function() {
-  this.timeout(5000);
+  this.timeout(15000);
   _.each(enlaces, function(valor) {
     it(valor.nombre, function(done) {
       request(app)
