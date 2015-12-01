@@ -32,9 +32,14 @@ router.get('/', function(req, res) {
     title: 'Gesco-DatabaseManagement: Informes'
   });
 
+  // Conecta a la base de datos
   client.connect(function(err, db) {
+    // Ejecuta consulta SQL
     client.exec_sql("ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;", function(err, datos) {
+      // Cierra conexión
       client.close();
+
+      // Genera el informe con la información recuperada
       informe.generar(data.rows);
     });
   });

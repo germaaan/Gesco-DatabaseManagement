@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
+// Añade un tabla al documento con la información recuperada de la base de datos
 function filasTabla(data) {
   $(document).ready(function() {
     $.each(data, function(clave, valor) {

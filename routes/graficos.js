@@ -23,7 +23,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 var express = require('express');
 var fs = require('fs');
 var _ = require('underscore');
+
 var router = express.Router();
+
 var client = require(appRoot + '/database/client');
 
 // GET de la página de gráficos
@@ -32,15 +34,23 @@ router.get('/', function(req, res) {
     title: 'Gesco-DatabaseManagement: Graficos'
   });
 
+  // Conecta a la base de datos
   client.connect(function(err, db) {
+    // Ejecuta consulta SQL
     client.exec_sql("ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;", function(err, datos) {
+      // Cierra conexión
       client.close();
 
+      // Crea el documento con el origen de datos para la gráfica
       var stream = fs.createWriteStream(appRoot + '/public/data/data.tsv');
       stream.write("nombre\tfrecuencia\n");
+
+      // Añade al origen de datos la información recuperada de la base de datos
       _.each(datos.rows, function(valor) {
         stream.write(valor.nombre + "\t" + valor.frecuencia + "\n");
       });
+
+      // Cierra el flujo al archivo
       stream.end();
     });
   });
