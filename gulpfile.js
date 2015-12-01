@@ -34,7 +34,6 @@ var sass = require('gulp-sass');
 var shell = require('gulp-shell');
 var uglify = require('gulp-uglify');
 
-var json = './bower.json';
 var main = ['app.js', 'routes/*.js'];
 var test = ['app.js', 'routes/*.js', 'lib/*.js'];
 var all = ['app.js', 'routes/*.js', 'lib/*.js', 'test/test.js', 'public/js/*.js'];
@@ -96,7 +95,7 @@ gulp.task('watch', function() {
 });
 
 // Tarea por defecto (métodos de generación)
-gulp.task('default', ['bower', 'sass', 'js', 'doc']);
+gulp.task('default', ['sass', 'js', 'doc']);
 
 // Ejecución de test unitarios
 gulp.task('test', ['default', 'lint', 'pre-test'], function() {
