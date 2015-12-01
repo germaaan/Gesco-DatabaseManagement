@@ -21,9 +21,11 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 // Dependencias
 var express = require('express');
+var jsonfile = require('jsonfile');
 var router = express.Router();
 
 var client = require(appRoot + '/database/client');
+var file = appRoot + "/public/data/data.json";
 
 // GET de la página principal
 router.get('/', function(req, res) {
@@ -34,10 +36,12 @@ router.get('/', function(req, res) {
       // Cierra conexión
       client.close();
 
-      res.render('index', {
-        title: 'Gesco-DatabaseManagement: Inicio',
-        data: datos.rows
-      });
+      jsonfile.writeFileSync(file, datos.rows);
+    });
+
+    res.render('index', {
+      title: 'Gesco-DatabaseManagement: Inicio',
+      data: jsonfile.readFileSync(file)
     });
   });
 });

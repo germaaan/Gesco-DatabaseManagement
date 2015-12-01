@@ -64,9 +64,11 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);
+<span class="hljs-keyword">var</span> jsonfile = <span class="hljs-built_in">require</span>(<span class="hljs-string">'jsonfile'</span>);
 <span class="hljs-keyword">var</span> router = express.Router();
 
-<span class="hljs-keyword">var</span> client = <span class="hljs-built_in">require</span>(appRoot + <span class="hljs-string">'/database/client'</span>);</pre></div></div>
+<span class="hljs-keyword">var</span> client = <span class="hljs-built_in">require</span>(appRoot + <span class="hljs-string">'/database/client'</span>);
+<span class="hljs-keyword">var</span> file = appRoot + <span class="hljs-string">"/public/data/data.json"</span>;</pre></div></div>
             
         </li>
         
@@ -128,10 +130,12 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
             
             <div class="content"><div class='highlight'><pre>      client.close();
 
-      res.render(<span class="hljs-string">'index'</span>, {
-        title: <span class="hljs-string">'Gesco-DatabaseManagement: Inicio'</span>,
-        data: datos.rows
-      });
+      jsonfile.writeFileSync(file, datos.rows);
+    });
+
+    res.render(<span class="hljs-string">'index'</span>, {
+      title: <span class="hljs-string">'Gesco-DatabaseManagement: Inicio'</span>,
+      data: jsonfile.readFileSync(file)
     });
   });
 });
