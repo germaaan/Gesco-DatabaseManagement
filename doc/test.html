@@ -84,7 +84,8 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> app = <span class="hljs-built_in">require</span>(__dirname + <span class="hljs-string">"/../app"</span>);
-<span class="hljs-keyword">var</span> informe = <span class="hljs-built_in">require</span>(__dirname + <span class="hljs-string">"/../lib/generarInforme"</span>);</pre></div></div>
+<span class="hljs-keyword">var</span> informe = <span class="hljs-built_in">require</span>(__dirname + <span class="hljs-string">"/../lib/generarInforme"</span>);
+<span class="hljs-keyword">var</span> client = <span class="hljs-built_in">require</span>(__dirname + <span class="hljs-string">"/../database/client"</span>);</pre></div></div>
             
         </li>
         
@@ -146,6 +147,30 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
+              <p>Conexión base de datos</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'Base de datos'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  it(<span class="hljs-string">'Conexión y consulta de selección'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    client.connect(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, db</span>) </span>{
+      client.exec_sql(<span class="hljs-string">"ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, datos</span>) </span>{
+        client.close();
+        should(datos).not.be.null();
+      });
+    });
+  });
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
               <p>Generar informe</p>
 
             </div>
@@ -159,11 +184,11 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
         </li>
         
         
-        <li id="section-7">
+        <li id="section-8">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
+                <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p>Enlaces a comprobar</p>
 
@@ -186,11 +211,11 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
         </li>
         
         
-        <li id="section-8">
+        <li id="section-9">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
+                <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
               <p>Prueba de acceso a la página</p>
 

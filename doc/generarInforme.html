@@ -67,24 +67,90 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
             
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> lxDocument = <span class="hljs-built_in">require</span>(<span class="hljs-string">'lx-pdf'</span>)(<span class="hljs-string">'lib/template.json'</span>);
 <span class="hljs-keyword">var</span> moment = <span class="hljs-built_in">require</span>(<span class="hljs-string">'moment'</span>);
-<span class="hljs-keyword">var</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'underscore'</span>);
+<span class="hljs-keyword">var</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'underscore'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Genera el archivo del informe</p>
 
-exports.generar = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">datos</span>) </span>{
-  <span class="hljs-keyword">var</span> cliente = <span class="hljs-string">"CLIENTE: Germán Martínez Maldonado"</span>;
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>exports.generar = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">datos</span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Diferentes campos del documento</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> cliente = <span class="hljs-string">"CLIENTE: Germán Martínez Maldonado"</span>;
   <span class="hljs-keyword">var</span> fecha = moment().format(<span class="hljs-string">"MMMM Do YYYY, h:mm:ss a"</span>);
   <span class="hljs-keyword">var</span> asunto = <span class="hljs-string">"Informe de frecuencias"</span>;
-  <span class="hljs-keyword">var</span> contenido = <span class="hljs-string">""</span>
+  <span class="hljs-keyword">var</span> contenido = <span class="hljs-string">""</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Procesa información recuperada de la base de datos</p>
 
-  _.each(datos, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">valor</span>) </span>{
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  _.each(datos, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">valor</span>) </span>{
     contenido += <span class="hljs-string">"· "</span> + valor.nombre + <span class="hljs-string">": "</span> + valor.frecuencia + <span class="hljs-string">"\n"</span>;
-  });
+  });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Añade la información a distintos campos del documento</p>
 
-  lxDocument.addContent(<span class="hljs-string">'cliente'</span>, cliente);
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  lxDocument.addContent(<span class="hljs-string">'cliente'</span>, cliente);
   lxDocument.addContent(<span class="hljs-string">'fecha'</span>, fecha);
   lxDocument.addContent(<span class="hljs-string">'asunto'</span>, asunto);
-  lxDocument.addContent(<span class="hljs-string">'contenido'</span>, contenido);
+  lxDocument.addContent(<span class="hljs-string">'contenido'</span>, contenido);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Genera el documento</p>
 
-  lxDocument.save(<span class="hljs-string">'public/data/gesco.pdf'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>) </span>{});
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  lxDocument.save(<span class="hljs-string">'public/data/gesco.pdf'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>) </span>{});
 };</pre></div></div>
             
         </li>

@@ -85,12 +85,67 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
             <div class="content"><div class='highlight'><pre>router.get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{
   res.render(<span class="hljs-string">'informes'</span>, {
     title: <span class="hljs-string">'Gesco-DatabaseManagement: Informes'</span>
-  });
+  });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Conecta a la base de datos</p>
 
-  client.connect(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, db</span>) </span>{
-    client.exec_sql(<span class="hljs-string">"ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, datos</span>) </span>{
-      client.close();
-      informe.generar(data.rows);
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  client.connect(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, db</span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Ejecuta consulta SQL</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    client.exec_sql(<span class="hljs-string">"ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, datos</span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Cierra conexión</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      client.close();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Genera el informe con la información recuperada</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      informe.generar(data.rows);
     });
   });
 });
