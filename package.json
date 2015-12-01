@@ -41,8 +41,11 @@
     "cookie-parser": "^1.4.0",
     "debug": "^2.2.0",
     "express": "^4.13.3",
+    "istanbul": "^0.4.0",
     "jade": "^1.11.0",
+    "jshint": "^2.8.0",
     "lx-pdf": "^0.1.2",
+    "mocha": "^2.3.3",
     "moment": "^2.10.6",
     "morgan": "^1.6.1",
     "request": "^2.65.0",
@@ -52,22 +55,19 @@
     "gulp-docco": "^0.0.4",
     "gulp-env": "^0.2.0",
     "gulp-install": "^0.6.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.1.0",
-    "gulp-shell": "^0.5.1",
-    "gulp-uglify": "^1.5.1"
-  },
-  "devDependencies": {
-    "coveralls": "^2.11.4",
     "gulp-istanbul": "^0.10.3",
     "gulp-jshint": "^2.0.0",
     "gulp-mocha": "^2.2.0",
     "gulp-nodemon": "^2.0.4",
-    "istanbul": "^0.4.0",
-    "jshint": "^2.8.0",
-    "mocha": "^2.3.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.0",
+    "gulp-shell": "^0.5.1",
+    "gulp-uglify": "^1.5.1",
     "should": "^7.1.1",
     "supertest": "^1.1.0"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.4"
   },
   "engines": {
     "node": "^4.2.2",
