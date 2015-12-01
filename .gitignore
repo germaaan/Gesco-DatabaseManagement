@@ -24,3 +24,4 @@ temp
 data.tsv
 
 # Configuración privada de Coveralls
+.coveralls.yml
