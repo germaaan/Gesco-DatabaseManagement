@@ -38,9 +38,11 @@ router.get('/', function(req, res) {
       // Genera el informe con la información recuperada
       informe.generar(data.rows);
 
-      res.render('informes', {
-        title: 'Gesco-DatabaseManagement: Informes'
-      });
+      done();
+    });
+
+    res.render('informes', {
+      title: 'Gesco-DatabaseManagement: Informes'
     });
   });
 });

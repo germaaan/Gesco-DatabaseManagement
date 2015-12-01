@@ -49,9 +49,11 @@ router.get('/', function(req, res) {
       // Cierra el flujo al archivo
       stream.end();
 
-      res.render('graficos', {
-        title: 'Gesco-DatabaseManagement: Graficos'
-      });
+      done();
+    });
+
+    res.render('graficos', {
+      title: 'Gesco-DatabaseManagement: Graficos'
     });
   });
 });

@@ -82,10 +82,7 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>router.get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{
-  res.render(<span class="hljs-string">'informes'</span>, {
-    title: <span class="hljs-string">'Gesco-DatabaseManagement: Informes'</span>
-  });</pre></div></div>
+            <div class="content"><div class='highlight'><pre>router.get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{</pre></div></div>
             
         </li>
         
@@ -146,6 +143,12 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
             </div>
             
             <div class="content"><div class='highlight'><pre>      informe.generar(data.rows);
+
+      done();
+    });
+
+    res.render(<span class="hljs-string">'informes'</span>, {
+      title: <span class="hljs-string">'Gesco-DatabaseManagement: Informes'</span>
     });
   });
 });
