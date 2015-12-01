@@ -21,7 +21,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 // Dependencias
 var gulp = require('gulp');
-var shell = require('gulp-shell');
 
 var concat = require('gulp-concat');
 var docco = require('gulp-docco');
