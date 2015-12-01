@@ -48,8 +48,6 @@ router.get('/', function(req, res) {
 
       // Cierra el flujo al archivo
       stream.end();
-
-      done();
     });
 
     res.render('graficos', {

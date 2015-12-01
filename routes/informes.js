@@ -37,8 +37,6 @@ router.get('/', function(req, res) {
 
       // Genera el informe con la información recuperada
       informe.generar(data.rows);
-
-      done();
     });
 
     res.render('informes', {
