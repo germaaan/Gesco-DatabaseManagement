@@ -30,10 +30,6 @@ var client = require(appRoot + '/database/client');
 
 // GET de la página de gráficos
 router.get('/', function(req, res) {
-  res.render('graficos', {
-    title: 'Gesco-DatabaseManagement: Graficos'
-  });
-
   // Conecta a la base de datos
   client.connect(function(err, db) {
     // Ejecuta consulta SQL
@@ -52,6 +48,10 @@ router.get('/', function(req, res) {
 
       // Cierra el flujo al archivo
       stream.end();
+
+      res.render('graficos', {
+        title: 'Gesco-DatabaseManagement: Graficos'
+      });
     });
   });
 });

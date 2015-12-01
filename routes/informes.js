@@ -28,10 +28,6 @@ var informe = require(appRoot + '/lib/generarInforme');
 
 // GET de la página de informes
 router.get('/', function(req, res) {
-  res.render('informes', {
-    title: 'Gesco-DatabaseManagement: Informes'
-  });
-
   // Conecta a la base de datos
   client.connect(function(err, db) {
     // Ejecuta consulta SQL
@@ -41,6 +37,10 @@ router.get('/', function(req, res) {
 
       // Genera el informe con la información recuperada
       informe.generar(data.rows);
+
+      res.render('informes', {
+        title: 'Gesco-DatabaseManagement: Informes'
+      });
     });
   });
 });
