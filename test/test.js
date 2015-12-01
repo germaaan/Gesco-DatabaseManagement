@@ -30,6 +30,7 @@ var should = require("should");
 // Módulos de la aplicación
 var app = require(__dirname + "/../app");
 var informe = require(__dirname + "/../lib/generarInforme");
+var client = require(__dirname + "/../database/client");
 
 // Método para parsear archivos JSON a objetos JS
 var cargar = function(archivo) {
@@ -55,6 +56,18 @@ var datos = {
 describe('Aplicación', function() {
   it('Archivo cargado', function() {
     should(app).not.be.null();
+  });
+});
+
+// Conexión base de datos
+describe('Base de datos', function() {
+  it('Conexión y consulta de selección', function() {
+    client.connect(function(err, db) {
+      client.exec_sql("ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;", function(err, datos) {
+        client.close();
+        should(datos).not.be.null();
+      });
+    });
   });
 });
 

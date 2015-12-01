@@ -22,3 +22,5 @@ app.min.js
 *.pdf
 temp
 data.tsv
+
+# Configuración privada de Coveralls
