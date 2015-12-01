@@ -25,7 +25,6 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var docco = require('gulp-docco');
 var env = require('gulp-env');
-var install = require('gulp-install');
 var istanbull = require('gulp-istanbul');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
@@ -50,12 +49,6 @@ gulp.on('stop', function() {
       process.exit(0);
     });
   }
-});
-
-// Instala todos los paquetes necesarios con NPM y Bower
-gulp.task('bower', function() {
-  return gulp.src(json)
-    .pipe(install());
 });
 
 // Comprobación sintáctica del código
