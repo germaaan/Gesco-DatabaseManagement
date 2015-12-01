@@ -9,7 +9,7 @@ Este proyecto participa en el Certamen de Proyectos Libres de la Universidad de 
 
 Desarrollado por Germán Martínez Maldonado ([@germaaan](https://github.com/germaaan)).
 
-Una descripción extendida del proyecto se puede encontrar en [este archivo](ABOUT.md).
+Una descripción extendida del proyecto se puede encontrar en [este archivo](INFO.md).
 
 ## Instalación
 
