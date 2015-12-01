@@ -66,15 +66,25 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> lxDocument = <span class="hljs-built_in">require</span>(<span class="hljs-string">'lx-pdf'</span>)(<span class="hljs-string">'lib/template.json'</span>);
+<span class="hljs-keyword">var</span> moment = <span class="hljs-built_in">require</span>(<span class="hljs-string">'moment'</span>);
+<span class="hljs-keyword">var</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'underscore'</span>);
 
 exports.generar = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">datos</span>) </span>{
-  <span class="hljs-built_in">console</span>.log(__dirname);
-  <span class="hljs-keyword">var</span> text = <span class="hljs-string">'Prueba'</span>;
-  lxDocument.addContent(<span class="hljs-string">'content'</span>, text);
+  <span class="hljs-keyword">var</span> cliente = <span class="hljs-string">"CLIENTE: Germán Martínez Maldonado"</span>;
+  <span class="hljs-keyword">var</span> fecha = moment().format(<span class="hljs-string">"MMMM Do YYYY, h:mm:ss a"</span>);
+  <span class="hljs-keyword">var</span> asunto = <span class="hljs-string">"Informe de frecuencias"</span>;
+  <span class="hljs-keyword">var</span> contenido = <span class="hljs-string">""</span>
 
-  lxDocument.save(<span class="hljs-string">'gesco.pdf'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>) </span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Documento generado"</span>);
-  })
+  _.each(datos, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">valor</span>) </span>{
+    contenido += <span class="hljs-string">"· "</span> + valor.nombre + <span class="hljs-string">": "</span> + valor.frecuencia + <span class="hljs-string">"\n"</span>;
+  });
+
+  lxDocument.addContent(<span class="hljs-string">'cliente'</span>, cliente);
+  lxDocument.addContent(<span class="hljs-string">'fecha'</span>, fecha);
+  lxDocument.addContent(<span class="hljs-string">'asunto'</span>, asunto);
+  lxDocument.addContent(<span class="hljs-string">'contenido'</span>, contenido);
+
+  lxDocument.save(<span class="hljs-string">'public/data/gesco.pdf'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>) </span>{});
 };</pre></div></div>
             
         </li>

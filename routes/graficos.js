@@ -22,6 +22,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 // Dependencias
 var express = require('express');
 var fs = require('fs');
+var _ = require('underscore');
 var router = express.Router();
 var client = require(appRoot + '/database/client');
 
