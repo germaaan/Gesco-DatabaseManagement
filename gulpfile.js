@@ -22,7 +22,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 // Dependencias
 var gulp = require('gulp');
 
-var concat = require('gulp-concat');
 var docco = require('gulp-docco');
 var env = require('gulp-env');
 var istanbul = require('gulp-istanbul');
@@ -34,9 +33,8 @@ var sass = require('gulp-sass');
 var shell = require('gulp-shell');
 var uglify = require('gulp-uglify');
 
-var main = ['app.js', 'routes/*.js'];
-var test = ['app.js', 'routes/*.js', 'lib/*.js'];
-var all = ['app.js', 'routes/*.js', 'lib/*.js', 'test/test.js', 'public/js/*.js'];
+var test = ['app.js', 'routes/*.js', 'database/*.js', 'lib/*.js'];
+var all = ['app.js', 'routes/*.js', 'database/*.js', 'lib/*.js', 'test/test.js', 'public/js/*.js'];
 var style = './public/style/scss/*.scss';
 
 var testing = false;
@@ -73,9 +71,7 @@ gulp.task('sass', function() {
 
 // Concatena y minifica los archivos JS
 gulp.task('js', function() {
-  return gulp.src(main)
-    .pipe(concat('app.all.js'))
-    .pipe(gulp.dest('./'))
+  return gulp.src("app.js")
     .pipe(rename('app.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./'));
@@ -121,6 +117,7 @@ gulp.task('dev', ['default'], function() {
     })
 });
 
+// Define las variables de entorno para producción
 gulp.task('setProduction', function() {
   env({
     vars: {

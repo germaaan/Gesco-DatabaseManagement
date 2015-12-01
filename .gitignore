@@ -10,8 +10,7 @@ public/style/css
 # Directorio con el resultado de los tests de cobertura
 coverage
 
-# Versión concatenada y minificada de la aplicación
-app.all.js
+# Versión minificada de la aplicación
 app.min.js
 
 # Logs y copias de seguridad
