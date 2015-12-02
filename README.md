@@ -39,11 +39,16 @@ gulp server
 - Si la aplicación está en modo producción se puede acceder desde la dirección [http://localhost:5000/](http://localhost:5000/).
 
 ## Despliegue en PaaS
-La aplicación está preparada para desplegarse automáticamente en una aplicación del PaaS `Heroku`. El archivo de configuración de dicho despliegue es el archivo [**Procfile**](Procfile).
+La aplicación está preparada para desplegarse automáticamente en una aplicación del PaaS `Heroku`. El archivo de configuración de dicho despliegue es el archivo [**Procfile**](Procfile). Se puede acceder a la aplicación desde la dirección [http://gescodbm.herokuapp.com/](http://gescodbm.herokuapp.com/).
+
+El principal motivo de haber elegido este PaaS es por su facilidad para el despliegue de aplicaciones, siendo importante que entre los lenguajes soportados por defecto esté Node.js; esto permite que simplemente con un fichero de configuración (`Procfile`) con una sola línea de texto podemos indicar la orden que debe ejecutarse en el stack para que nuestra aplicación se pueda ejecutar correctamente. También es importante tener en cuenta que la base de datos que usa la aplicación es externa (actualmente se encuentra en una máquina virtual en Azure), por lo que esto no presentará ningún problema a la hora de desplegar la aplicación.
+
+Además, también da muchas facilidades para realizar el despliegue automático de la aplicación, desde el propio panel de control de Heroku y en un par de pasos podemos crear una configuración para que nuestra aplicación se despliegue en el PaaS cada que se realice una construcción de la integración continua correcta.
+
+En cuanto al precio, Heroku tiene un plan gratuito que consiste en un stack con 512 MB de RAM y una aplicación web corriendo, solo teniendo como contraparte que el proceso se pone a "dormir" después de 30 minutos de inactividad (problema que es facilmente solucionable mediante mecanismos de acceso programado). Por todo lo descrito, este PaaS es una muy buena opción para que la aplicación empiece a funcionar en una etapa tan temprana de su funcionamiento.
 
 ## Estado de la aplicación
 El estado actual de la aplicación es el siguiente:
-- Página de inicio temporal ([localhost:3000](https://dl.dropboxusercontent.com/s/o7lcltyqzitxmd9/index.png))
-- Página con un gráfico de barras generado cuando se carga la página ([localhost:3000/graficos](https://dl.dropboxusercontent.com/s/fc823d9w9r3kre5/grafico.png))
-- Página con un archivo PDF generado cuando se carga la página ([localhost:3000/informe](https://dl.dropboxusercontent.com/s/zowmg9b6e4lhwoz/informe.png))
-- [Archivo PDF](https://dl.dropboxusercontent.com/s/wku6nr51ific1jn/pdf.png) generado.
+- [Presentación de la información en tablas](http://gescodbm.herokuapp.com/)
+- [Presentación de la información en gráficos](http://gescodbm.herokuapp.com/graficos)
+- [Presentación de la información en informes](http://gescodbm.herokuapp.com/informes)
