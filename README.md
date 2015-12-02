@@ -2,6 +2,8 @@
 
 [![Dependency Status](https://img.shields.io/david/Gescosolution/Gesco-DatabaseManagement.svg?style=flat)](https://david-dm.org/Gescosolution/Gesco-DatabaseManagement) [![devDependency Status](https://img.shields.io/david/dev/Gescosolution/Gesco-DatabaseManagement.svg?style=flat)](https://david-dm.org/Gescosolution/Gesco-DatabaseManagement#info=devDependencies) [![Coverage Status](https://img.shields.io/coveralls/Gescosolution/Gesco-DatabaseManagement.svg?style=flat)](https://coveralls.io/r/Gescosolution/Gesco-DatabaseManagement?branch=master)
 
+[![Heroku](https://www.herokucdn.com/deploy/button.png)](http://gescodbm.herokuapp.com/)
+
 # Gesco-DatabaseManagement
 Módulo para la gestión de información de la base de datos de la aplicación Gesco. Publicado bajo licencia **GNU GENERAL PUBLIC LICENSE Version 2**.
 
@@ -47,7 +49,7 @@ Además, Heroku también da muchas facilidades para realizar el despliegue autom
 
 ![pra03_img01.png](https://dl.dropboxusercontent.com/s/abe8zd2fzha40je/pra03_img01.png)
 
-En cuanto al precio, Heroku tiene un plan gratuito que consiste en un stack con 512 MB de RAM y una aplicación web corriendo, solo teniendo como contraparte que el proceso se pone a "dormir" después de 30 minutos de inactividad (problema que es facilmente solucionable mediante mecanismos de acceso programado). Por todo lo descrito, este PaaS es una muy buena opción para que la aplicación empiece a funcionar en una etapa tan temprana de su desarrollo.
+En cuanto al precio, Heroku tiene un plan gratuito que consiste en un stack con 512 MB de RAM y una aplicación web corriendo, solo teniendo como incoveniente que el proceso se pone a "dormir" después de 30 minutos de inactividad (problema que es facilmente solucionable mediante mecanismos de acceso programado). Por todo lo descrito, este PaaS es una muy buena opción para que la aplicación empiece a funcionar en una etapa tan temprana de su desarrollo.
 
 ## Estado de la aplicación
 El estado actual de la aplicación es el siguiente:
@@ -58,7 +60,6 @@ El estado actual de la aplicación es el siguiente:
 El acceso a cada una de esas direcciones hace una petición GET al servidor Express de nuestra aplicación, respondiendo este de la forma adecuada según la programación que le hayamos indicado. En la práctica totalidad de los casos esta respuesta consiste en que se hace una consulta de información a la base de datos y la información obtenida se representa en el navegador de distinta forma en función del servicio solicitado: tabla HTML, gráfico de barras o documento PDF.
 
 ## Despliegue automático
-
 Para probar que se está realizando el despliegue automático de la aplicación se incluyen estas dos capturas de pantalla. La primera es correspondiente a la comprobación de la [integración continua](https://travis-ci.org/Gescosolution/Gesco-DatabaseManagement/builds/94306573) resultante del commit [5d467bd](https://github.com/Gescosolution/Gesco-DatabaseManagement/commit/5d467bd0407b0075aa3bd6fe8744d0a730ebb124).
 
 ![pra03_img02.png](https://dl.dropboxusercontent.com/s/ovoxmd9q8ki0cnf/pra03_img02.png)
