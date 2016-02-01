@@ -129,3 +129,16 @@ gulp.task('setProduction', function() {
 
 // Ejecuta la aplicación en modo producción
 gulp.task('server', ['default', 'setProduction'], shell.task(['node app']));
+
+// Define las variables de entorno para Docker
+gulp.task('setDocker', function() {
+  env({
+    vars: {
+      'NODE_ENV': 'production',
+      'PORT': 80
+    }
+  });
+});
+
+// Ejecuta la aplicación en modo producción
+gulp.task('docker', ['default', 'setDocker'], shell.task(['forever start -l /var/log/forever.log -a -o /var/log/out.log -e /var/log/err.log ./app.min.js']));
