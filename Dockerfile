@@ -19,5 +19,6 @@ RUN npm -g install gulp bower
 RUN npm install
 RUN bower install --allow-root
 
-EXPOSE 8080
-CMD ["gulp public"]
+EXPOSE 5000
+RUN ifconfig eth0
+CMD ["gulp", "server"]
