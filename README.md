@@ -44,7 +44,7 @@ La aplicación ha sido desplegada también en el PaaS Heroku, la información es
 ## Despliegue en contenedores y otras infraestructuras virtualizadas
 Además de en Heroku, la aplicación ha sido desplegada en Docker, Azure y Bluemix.
 
-La ventaja de crear un contenedor para una aplicación, es que ese contenedor se convierte en un elemento autocontenido que nos permite desplegar la aplicación fácilmente sin tener que preocuparnos de instalar los recursos o realizar las configuraciones necesarias, todo lo que necesitamos está en el propio contenedor por lo que una vez que descaguemos el contenedor tendremos todo lo que necesitemos para ejecutar la aplicación.
+La ventaja de crear un contenedor para una aplicación, es que ese contenedor se convierte en un elemento autocontenido que nos permite desplegar la aplicación fácilmente sin tener que preocuparnos de instalar los recursos o realizar las configuraciones necesarias, todo lo que necesitamos está en el propio contenedor por lo que una vez que descarguemos el contenedor tendremos todo lo que necesitemos para ejecutar la aplicación.
 
 El archivo de configuración de Docker lo podemos encontrar [aquí](Dockerfile); además, ha sido subido al repositorio de contenedores Docker, podemos encontrarlo en [este enlace a Docker Hub](https://hub.docker.com/r/germaaan/gesco-dbm/).
 
@@ -69,7 +69,15 @@ También se ha desplegado en la plataforma de IBM, Bluemix, una plataforma de de
 
 La aplicación está accesible desde la dirección [http://gesco-dbm-cc.eu-gb.mybluemix.net/](http://gesco-dbm-cc.eu-gb.mybluemix.net/).
 
-Por último, la aplicación también se encuentra disponible en Azure, la plataforma de Microsoft que nos permite crear máquinas virtuales y trabajar con ella como si un ordenar local y físico se tratara. El despliegue en Azure está disponible en la dirección [http://gesco-dbm-cc.cloudapp.net/](http://gesco-dbm-cc.cloudapp.net/).
+Por último, la aplicación también se encuentra disponible en Azure, la plataforma de Microsoft que nos permite crear máquinas virtuales y trabajar con ella como si un ordenar local y físico se tratara a diferencia de los PaaS que hemos venido usando. Para desplegar cómodamente la aplicación en esta infraestructura vamos a usar un script de provisionamiento, en concreto vamos a usar la aplicación Ansible para de forma automática instalar en la máquina todos los recursos que necesita nuestra aplicación. El archivo de configuración del provisionamiento se puede encontrar [aquí](provisioning/gesco-dbm.yml).
+
+![azure1.png](https://dl.dropboxusercontent.com/s/6dwgikmg4rt9giu/azure1.png)
+
+El despliegue en Azure está disponible en la dirección [http://gesco-dbm-cc.cloudapp.net/](http://gesco-dbm-cc.cloudapp.net/).
+
+![azure2.png](https://dl.dropboxusercontent.com/s/65mditwmvf4irb9/azure2.png)
+
+Otra ventaja de usar provisionamiento, es que si quisiéramos hacer una prueba local debido a que no disponemos de acceso a una máquina virtual en la nube, podríamos crear una máquina virtual con Vagrant y provisionarla con el _playbook_ de Ansible, para ello solo tendríamos que crear el archivo de configuración de nuestra máquina Vagrant, el [Vagrantfile](provisioning/Vagrantfile).
 
 ## Estado de la aplicación
 El estado actual de la aplicación es el siguiente:

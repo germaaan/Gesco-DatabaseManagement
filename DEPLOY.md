@@ -7,7 +7,7 @@ Además, Heroku también da muchas facilidades para realizar el despliegue autom
 
 ![pra03_img01.png](https://dl.dropboxusercontent.com/s/abe8zd2fzha40je/pra03_img01.png)
 
-En cuanto al precio, Heroku tiene un plan gratuito que consiste en un stack con 512 MB de RAM y una aplicación web corriendo, solo teniendo como incoveniente que el proceso se pone a "dormir" después de 30 minutos de inactividad (problema que es facilmente solucionable mediante mecanismos de acceso programado). Por todo lo descrito, este PaaS es una muy buena opción para que la aplicación empiece a funcionar en una etapa tan temprana de su desarrollo.
+En cuanto al precio, Heroku tiene un plan gratuito que consiste en un stack con 512 MB de RAM y una aplicación web corriendo, solo teniendo como inconveniente que el proceso se pone a "dormir" después de 30 minutos de inactividad (problema que es fácilmente solucionable mediante mecanismos de acceso programado). Por todo lo descrito, este PaaS es una muy buena opción para que la aplicación empiece a funcionar en una etapa tan temprana de su desarrollo.
 
 ## Despliegue automático
 Para probar que se está realizando el despliegue automático de la aplicación se incluyen estas dos capturas de pantalla. La primera es correspondiente a la comprobación de la [integración continua](https://travis-ci.org/Gescosolution/Gesco-DatabaseManagement/builds/94306573) resultante del commit [5d467bd](https://github.com/Gescosolution/Gesco-DatabaseManagement/commit/5d467bd0407b0075aa3bd6fe8744d0a730ebb124).
