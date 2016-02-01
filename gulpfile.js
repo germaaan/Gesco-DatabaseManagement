@@ -135,7 +135,7 @@ gulp.task('setPublic', function() {
   env({
     vars: {
       'NODE_ENV': 'production',
-      'PORT': 80
+      'PORT': 8080
     }
   });
 });
