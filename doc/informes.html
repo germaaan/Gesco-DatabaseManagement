@@ -96,20 +96,11 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>Comprobamos si el archivo existe porque será necesario borrarlo</p>
+              <p>Conecta a la base de datos</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  fs.stat(file, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, stats</span>) </span>{
-    <span class="hljs-keyword">if</span> (err) {
-      <span class="hljs-built_in">console</span>.log(err);
-      <span class="hljs-keyword">return</span>;
-    }
-
-    <span class="hljs-keyword">if</span> (stats.isFile()) {
-      fs.unlinkSync(file);
-    }
-  });</pre></div></div>
+            <div class="content"><div class='highlight'><pre>  client.connect(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, db</span>) </span>{</pre></div></div>
             
         </li>
         
@@ -120,11 +111,11 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p>Conecta a la base de datos</p>
+              <p>Ejecuta consulta SQL</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  client.connect(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, db</span>) </span>{</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    client.exec_sql(<span class="hljs-string">"ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, datos</span>) </span>{</pre></div></div>
             
         </li>
         
@@ -135,21 +126,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>Ejecuta consulta SQL</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    client.exec_sql(<span class="hljs-string">"ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, datos</span>) </span>{</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-7">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
-              </div>
               <p>Cierra conexión</p>
 
             </div>
@@ -159,11 +135,11 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
         </li>
         
         
-        <li id="section-8">
+        <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <p>Genera el informe con la información recuperada</p>
 
