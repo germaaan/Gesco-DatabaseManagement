@@ -40,24 +40,24 @@ var y = d3.scale.linear()
 // El eje X está orientado al fondo de la página
 var xAxis = d3.svg.axis()
   .scale(x)
-  .orient("bottom");
+  .orient('bottom');
 
 // El eje Y estará orientado a la zona izquierda de la página
 // Además, indicamos el número de marcas que va a tener dicho eje
 var yAxis = d3.svg.axis()
   .scale(y)
-  .orient("left")
-  .ticks(20, "%");
+  .orient('left')
+  .ticks(20, '%');
 
 // Seleccionamos la zona donde vamos a añadir el gráfico
-var svg = d3.select("body").append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+var svg = d3.select('body').append('svg')
+  .attr('width', width + margin.left + margin.right)
+  .attr('height', height + margin.top + margin.bottom)
+  .append('g')
+  .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
 // Parseamos el archivo TSV con los valores del gráfico
-d3.tsv("data/data.tsv", type, function(error, data) {
+d3.tsv('data/data.tsv', type, function(error, data) {
   if (error) throw error;
 
   // Los valores correspondientes al eje X
@@ -71,43 +71,43 @@ d3.tsv("data/data.tsv", type, function(error, data) {
   })]);
 
   // Agregamos a nuestro gráfico el eje X
-  svg.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + height + ")")
+  svg.append('g')
+    .attr('class', 'x axis')
+    .attr('transform', 'translate(0,' + height + ')')
     .call(xAxis)
-    .append("text")
-    .attr("transform", "rotate(0)")
-    .attr("x", 6)
-    .attr("dx", "51.5em")
-    .attr("dy", "3.5em")
-    .style("text-anchor", "end")
-    .text("Nombres");
+    .append('text')
+    .attr('transform', 'rotate(0)')
+    .attr('x', 6)
+    .attr('dx', '51.5em')
+    .attr('dy', '3.5em')
+    .style('text-anchor', 'end')
+    .text('Nombres');
 
   // Agregamos a nuestro gráfico el eje Y
-  svg.append("g")
-    .attr("class", "y axis")
+  svg.append('g')
+    .attr('class', 'y axis')
     .call(yAxis)
-    .append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 6)
-    .attr("dy", "-5em")
-    .attr("dx", "-20.5em")
-    .style("text-anchor", "end")
-    .text("Frecuencias");
+    .append('text')
+    .attr('transform', 'rotate(-90)')
+    .attr('y', 6)
+    .attr('dy', '-5em')
+    .attr('dx', '-20.5em')
+    .style('text-anchor', 'end')
+    .text('Frecuencias');
 
   // Seleccinamos todas las barras del gráfico y las vamos añadiendo
-  svg.selectAll(".bar")
+  svg.selectAll('.bar')
     .data(data)
-    .enter().append("rect")
-    .attr("class", "bar")
-    .attr("x", function(d) {
+    .enter().append('rect')
+    .attr('class', 'bar')
+    .attr('x', function(d) {
       return x(d.nombre);
     })
-    .attr("width", x.rangeBand())
-    .attr("y", function(d) {
+    .attr('width', x.rangeBand())
+    .attr('y', function(d) {
       return y(d.frecuencia);
     })
-    .attr("height", function(d) {
+    .attr('height', function(d) {
       return height - y(d.frecuencia);
     });
 });

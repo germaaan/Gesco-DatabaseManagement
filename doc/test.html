@@ -65,10 +65,10 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">"underscore"</span>);
-<span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fs"</span>);
-<span class="hljs-keyword">var</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">"supertest"</span>);
-<span class="hljs-keyword">var</span> should = <span class="hljs-built_in">require</span>(<span class="hljs-string">"should"</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'underscore'</span>);
+<span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">var</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">'supertest'</span>);
+<span class="hljs-keyword">var</span> should = <span class="hljs-built_in">require</span>(<span class="hljs-string">'should'</span>);</pre></div></div>
             
         </li>
         
@@ -83,9 +83,9 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> app = <span class="hljs-built_in">require</span>(__dirname + <span class="hljs-string">"/../app"</span>);
-<span class="hljs-keyword">var</span> informe = <span class="hljs-built_in">require</span>(__dirname + <span class="hljs-string">"/../lib/generarInforme"</span>);
-<span class="hljs-keyword">var</span> client = <span class="hljs-built_in">require</span>(__dirname + <span class="hljs-string">"/../database/client"</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> app = <span class="hljs-built_in">require</span>(__dirname + <span class="hljs-string">'/../app'</span>);
+<span class="hljs-keyword">var</span> informe = <span class="hljs-built_in">require</span>(__dirname + <span class="hljs-string">'/../lib/generarInforme'</span>);
+<span class="hljs-keyword">var</span> client = <span class="hljs-built_in">require</span>(__dirname + <span class="hljs-string">'/../database/client'</span>);</pre></div></div>
             
         </li>
         
@@ -106,16 +106,16 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
   <span class="hljs-keyword">try</span> {
     config = <span class="hljs-built_in">JSON</span>.parse(fs.readFileSync(archivo));
   } <span class="hljs-keyword">catch</span> (e) {
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Error: no existe el archivo "</span> + archivo);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error: no existe el archivo '</span> + archivo);
   }
 
   <span class="hljs-keyword">return</span> config;
 };
 
-<span class="hljs-keyword">var</span> enlaces = cargar(__dirname + <span class="hljs-string">"/../test/enlaces.json"</span>);
+<span class="hljs-keyword">var</span> enlaces = cargar(__dirname + <span class="hljs-string">'/../test/enlaces.json'</span>);
 
 <span class="hljs-keyword">var</span> datos = {
-  nombre: <span class="hljs-string">"prueba"</span>,
+  nombre: <span class="hljs-string">'prueba'</span>,
   frecuencia: <span class="hljs-number">0.0</span>
 };</pre></div></div>
             
@@ -153,8 +153,8 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
             
             <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'Base de datos'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
   it(<span class="hljs-string">'Conexión y consulta de selección'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-    client.connect(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, db</span>) </span>{
-      client.exec_sql(<span class="hljs-string">"ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, datos</span>) </span>{
+    client.connect(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      client.exec_sql(<span class="hljs-string">'ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, datos</span>) </span>{
         client.close();
         should(datos).not.be.null();
       });
@@ -202,8 +202,8 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
     _.each(enlaces, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">valor</span>) </span>{
       <span class="hljs-keyword">var</span> size = _.size(valor);
       should(size).be.exactly(<span class="hljs-number">2</span>);
-      should(valor).have.property(<span class="hljs-string">"nombre"</span>);
-      should(valor).have.property(<span class="hljs-string">"ruta"</span>);
+      should(valor).have.property(<span class="hljs-string">'nombre'</span>);
+      should(valor).have.property(<span class="hljs-string">'ruta'</span>);
     });
   });
 });</pre></div></div>
@@ -227,19 +227,19 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
     it(valor.nombre, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>) </span>{
       request(app)
         .get(valor.ruta)
-        .expect(<span class="hljs-string">"Content-Type"</span>, <span class="hljs-string">"text/html; charset=utf-8"</span>)
+        .expect(<span class="hljs-string">'Content-Type'</span>, <span class="hljs-string">'text/html; charset=utf-8'</span>)
         .expect(<span class="hljs-number">200</span>)
-        .end(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, res</span>) </span>{
+        .end(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
           <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">return</span> done(err);
           done();
         });
     });
   });
-  it(<span class="hljs-string">"Error 404"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>) </span>{
+  it(<span class="hljs-string">'Error 404'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>) </span>{
     request(app)
-      .get(<span class="hljs-string">"/foo"</span>)
+      .get(<span class="hljs-string">'/foo'</span>)
       .expect(<span class="hljs-number">404</span>)
-      .end(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, res</span>) </span>{
+      .end(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
         <span class="hljs-keyword">if</span> (err) {
           <span class="hljs-keyword">throw</span> err;
         }

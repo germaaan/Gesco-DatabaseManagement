@@ -64,13 +64,10 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);
-<span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fs"</span>);
 <span class="hljs-keyword">var</span> router = express.Router();
 
 <span class="hljs-keyword">var</span> client = <span class="hljs-built_in">require</span>(appRoot + <span class="hljs-string">'/database/client'</span>);
-<span class="hljs-keyword">var</span> informe = <span class="hljs-built_in">require</span>(appRoot + <span class="hljs-string">'/lib/generarInforme'</span>);
-
-<span class="hljs-keyword">var</span> file = appRoot + <span class="hljs-string">"/public/data/data.pdf"</span>;</pre></div></div>
+<span class="hljs-keyword">var</span> informe = <span class="hljs-built_in">require</span>(appRoot + <span class="hljs-string">'/lib/generarInforme'</span>);</pre></div></div>
             
         </li>
         
@@ -100,7 +97,7 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  client.connect(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, db</span>) </span>{</pre></div></div>
+            <div class="content"><div class='highlight'><pre>  client.connect(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</pre></div></div>
             
         </li>
         
@@ -115,7 +112,7 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    client.exec_sql(<span class="hljs-string">"ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, datos</span>) </span>{</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    client.exec_sql(<span class="hljs-string">'ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</pre></div></div>
             
         </li>
         

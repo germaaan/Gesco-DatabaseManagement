@@ -119,7 +119,7 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
             
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> xAxis = d3.svg.axis()
   .scale(x)
-  .orient(<span class="hljs-string">"bottom"</span>);</pre></div></div>
+  .orient(<span class="hljs-string">'bottom'</span>);</pre></div></div>
             
         </li>
         
@@ -137,8 +137,8 @@ Además, indicamos el número de marcas que va a tener dicho eje</p>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> yAxis = d3.svg.axis()
   .scale(y)
-  .orient(<span class="hljs-string">"left"</span>)
-  .ticks(<span class="hljs-number">20</span>, <span class="hljs-string">"%"</span>);</pre></div></div>
+  .orient(<span class="hljs-string">'left'</span>)
+  .ticks(<span class="hljs-number">20</span>, <span class="hljs-string">'%'</span>);</pre></div></div>
             
         </li>
         
@@ -153,11 +153,11 @@ Además, indicamos el número de marcas que va a tener dicho eje</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> svg = d3.select(<span class="hljs-string">"body"</span>).append(<span class="hljs-string">"svg"</span>)
-  .attr(<span class="hljs-string">"width"</span>, width + margin.left + margin.right)
-  .attr(<span class="hljs-string">"height"</span>, height + margin.top + margin.bottom)
-  .append(<span class="hljs-string">"g"</span>)
-  .attr(<span class="hljs-string">"transform"</span>, <span class="hljs-string">"translate("</span> + margin.left + <span class="hljs-string">","</span> + margin.top + <span class="hljs-string">")"</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> svg = d3.select(<span class="hljs-string">'body'</span>).append(<span class="hljs-string">'svg'</span>)
+  .attr(<span class="hljs-string">'width'</span>, width + margin.left + margin.right)
+  .attr(<span class="hljs-string">'height'</span>, height + margin.top + margin.bottom)
+  .append(<span class="hljs-string">'g'</span>)
+  .attr(<span class="hljs-string">'transform'</span>, <span class="hljs-string">'translate('</span> + margin.left + <span class="hljs-string">','</span> + margin.top + <span class="hljs-string">')'</span>);</pre></div></div>
             
         </li>
         
@@ -172,7 +172,7 @@ Además, indicamos el número de marcas que va a tener dicho eje</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>d3.tsv(<span class="hljs-string">"data/data.tsv"</span>, type, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, data</span>) </span>{
+            <div class="content"><div class='highlight'><pre>d3.tsv(<span class="hljs-string">'data/data.tsv'</span>, type, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, data</span>) </span>{
   <span class="hljs-keyword">if</span> (error) <span class="hljs-keyword">throw</span> error;</pre></div></div>
             
         </li>
@@ -223,17 +223,17 @@ Además, indicamos el número de marcas que va a tener dicho eje</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  svg.append(<span class="hljs-string">"g"</span>)
-    .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"x axis"</span>)
-    .attr(<span class="hljs-string">"transform"</span>, <span class="hljs-string">"translate(0,"</span> + height + <span class="hljs-string">")"</span>)
+            <div class="content"><div class='highlight'><pre>  svg.append(<span class="hljs-string">'g'</span>)
+    .attr(<span class="hljs-string">'class'</span>, <span class="hljs-string">'x axis'</span>)
+    .attr(<span class="hljs-string">'transform'</span>, <span class="hljs-string">'translate(0,'</span> + height + <span class="hljs-string">')'</span>)
     .call(xAxis)
-    .append(<span class="hljs-string">"text"</span>)
-    .attr(<span class="hljs-string">"transform"</span>, <span class="hljs-string">"rotate(0)"</span>)
-    .attr(<span class="hljs-string">"x"</span>, <span class="hljs-number">6</span>)
-    .attr(<span class="hljs-string">"dx"</span>, <span class="hljs-string">"51.5em"</span>)
-    .attr(<span class="hljs-string">"dy"</span>, <span class="hljs-string">"3.5em"</span>)
-    .style(<span class="hljs-string">"text-anchor"</span>, <span class="hljs-string">"end"</span>)
-    .text(<span class="hljs-string">"Nombres"</span>);</pre></div></div>
+    .append(<span class="hljs-string">'text'</span>)
+    .attr(<span class="hljs-string">'transform'</span>, <span class="hljs-string">'rotate(0)'</span>)
+    .attr(<span class="hljs-string">'x'</span>, <span class="hljs-number">6</span>)
+    .attr(<span class="hljs-string">'dx'</span>, <span class="hljs-string">'51.5em'</span>)
+    .attr(<span class="hljs-string">'dy'</span>, <span class="hljs-string">'3.5em'</span>)
+    .style(<span class="hljs-string">'text-anchor'</span>, <span class="hljs-string">'end'</span>)
+    .text(<span class="hljs-string">'Nombres'</span>);</pre></div></div>
             
         </li>
         
@@ -248,16 +248,16 @@ Además, indicamos el número de marcas que va a tener dicho eje</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  svg.append(<span class="hljs-string">"g"</span>)
-    .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"y axis"</span>)
+            <div class="content"><div class='highlight'><pre>  svg.append(<span class="hljs-string">'g'</span>)
+    .attr(<span class="hljs-string">'class'</span>, <span class="hljs-string">'y axis'</span>)
     .call(yAxis)
-    .append(<span class="hljs-string">"text"</span>)
-    .attr(<span class="hljs-string">"transform"</span>, <span class="hljs-string">"rotate(-90)"</span>)
-    .attr(<span class="hljs-string">"y"</span>, <span class="hljs-number">6</span>)
-    .attr(<span class="hljs-string">"dy"</span>, <span class="hljs-string">"-5em"</span>)
-    .attr(<span class="hljs-string">"dx"</span>, <span class="hljs-string">"-20.5em"</span>)
-    .style(<span class="hljs-string">"text-anchor"</span>, <span class="hljs-string">"end"</span>)
-    .text(<span class="hljs-string">"Frecuencias"</span>);</pre></div></div>
+    .append(<span class="hljs-string">'text'</span>)
+    .attr(<span class="hljs-string">'transform'</span>, <span class="hljs-string">'rotate(-90)'</span>)
+    .attr(<span class="hljs-string">'y'</span>, <span class="hljs-number">6</span>)
+    .attr(<span class="hljs-string">'dy'</span>, <span class="hljs-string">'-5em'</span>)
+    .attr(<span class="hljs-string">'dx'</span>, <span class="hljs-string">'-20.5em'</span>)
+    .style(<span class="hljs-string">'text-anchor'</span>, <span class="hljs-string">'end'</span>)
+    .text(<span class="hljs-string">'Frecuencias'</span>);</pre></div></div>
             
         </li>
         
@@ -272,18 +272,18 @@ Además, indicamos el número de marcas que va a tener dicho eje</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  svg.selectAll(<span class="hljs-string">".bar"</span>)
+            <div class="content"><div class='highlight'><pre>  svg.selectAll(<span class="hljs-string">'.bar'</span>)
     .data(data)
-    .enter().append(<span class="hljs-string">"rect"</span>)
-    .attr(<span class="hljs-string">"class"</span>, <span class="hljs-string">"bar"</span>)
-    .attr(<span class="hljs-string">"x"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">d</span>) </span>{
+    .enter().append(<span class="hljs-string">'rect'</span>)
+    .attr(<span class="hljs-string">'class'</span>, <span class="hljs-string">'bar'</span>)
+    .attr(<span class="hljs-string">'x'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">d</span>) </span>{
       <span class="hljs-keyword">return</span> x(d.nombre);
     })
-    .attr(<span class="hljs-string">"width"</span>, x.rangeBand())
-    .attr(<span class="hljs-string">"y"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">d</span>) </span>{
+    .attr(<span class="hljs-string">'width'</span>, x.rangeBand())
+    .attr(<span class="hljs-string">'y'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">d</span>) </span>{
       <span class="hljs-keyword">return</span> y(d.frecuencia);
     })
-    .attr(<span class="hljs-string">"height"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">d</span>) </span>{
+    .attr(<span class="hljs-string">'height'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">d</span>) </span>{
       <span class="hljs-keyword">return</span> height - y(d.frecuencia);
     });
 });

@@ -99,7 +99,7 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  client.connect(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, db</span>) </span>{</pre></div></div>
+            <div class="content"><div class='highlight'><pre>  client.connect(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</pre></div></div>
             
         </li>
         
@@ -114,7 +114,7 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    client.exec_sql(<span class="hljs-string">"ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, datos</span>) </span>{</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    client.exec_sql(<span class="hljs-string">'ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, datos</span>) </span>{</pre></div></div>
             
         </li>
         
@@ -145,7 +145,7 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
             </div>
             
             <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">var</span> stream = fs.createWriteStream(appRoot + <span class="hljs-string">'/public/data/data.tsv'</span>);
-      stream.write(<span class="hljs-string">"nombre\tfrecuencia\n"</span>);</pre></div></div>
+      stream.write(<span class="hljs-string">'nombre\tfrecuencia\n'</span>);</pre></div></div>
             
         </li>
         
@@ -161,7 +161,7 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
             </div>
             
             <div class="content"><div class='highlight'><pre>      _.each(datos.rows, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">valor</span>) </span>{
-        stream.write(valor.nombre + <span class="hljs-string">"\t"</span> + valor.frecuencia + <span class="hljs-string">"\n"</span>);
+        stream.write(valor.nombre + <span class="hljs-string">'\t'</span> + valor.frecuencia + <span class="hljs-string">'\n'</span>);
       });</pre></div></div>
             
         </li>

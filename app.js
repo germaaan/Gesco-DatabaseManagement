@@ -26,9 +26,7 @@ var express = require('express');
 
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var debug = require('debug')('Gesco-DatabaseManagement:server');
 var favicon = require('serve-favicon');
-var http = require('http');
 var logger = require('morgan');
 var path = require('path');
 global.appRoot = path.resolve(__dirname);
@@ -86,7 +84,7 @@ app.use(function(err, req, res, next) {
 // Servidor escuchando dirección y puertos correspondientes
 app.listen(app.get('port'), app.get('ip'), function() {
   console.log('Aplicación escuchando peticiones para la dirección ' + app.get('ip') +
-    ' en el puerto ' + app.get('port') + " ...");
+    ' en el puerto ' + app.get('port') + ' ...');
 });
 
 module.exports = app;

@@ -31,19 +31,19 @@ var client = require(appRoot + '/database/client');
 // GET de la página de gráficos
 router.get('/', function(req, res) {
   // Conecta a la base de datos
-  client.connect(function(err, db) {
+  client.connect(function() {
     // Ejecuta consulta SQL
-    client.exec_sql("ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;", function(err, datos) {
+    client.exec_sql('ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;', function(err, datos) {
       // Cierra conexión
       client.close();
 
       // Crea el documento con el origen de datos para la gráfica
       var stream = fs.createWriteStream(appRoot + '/public/data/data.tsv');
-      stream.write("nombre\tfrecuencia\n");
+      stream.write('nombre\tfrecuencia\n');
 
       // Añade al origen de datos la información recuperada de la base de datos
       _.each(datos.rows, function(valor) {
-        stream.write(valor.nombre + "\t" + valor.frecuencia + "\n");
+        stream.write(valor.nombre + '\t' + valor.frecuencia + '\n');
       });
 
       // Cierra el flujo al archivo

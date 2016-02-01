@@ -21,21 +21,18 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 // Dependencias
 var express = require('express');
-var fs = require("fs");
 var router = express.Router();
 
 var client = require(appRoot + '/database/client');
 var informe = require(appRoot + '/lib/generarInforme');
 
-var file = appRoot + "/public/data/data.pdf";
-
 // GET de la página de informes
 router.get('/', function(req, res) {
 
   // Conecta a la base de datos
-  client.connect(function(err, db) {
+  client.connect(function() {
     // Ejecuta consulta SQL
-    client.exec_sql("ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;", function(err, datos) {
+    client.exec_sql('ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;', function() {
       // Cierra conexión
       client.close();
 

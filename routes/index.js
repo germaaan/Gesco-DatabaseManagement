@@ -25,14 +25,14 @@ var jsonfile = require('jsonfile');
 var router = express.Router();
 
 var client = require(appRoot + '/database/client');
-var file = appRoot + "/public/data/data.json";
+var file = appRoot + '/public/data/data.json';
 
 // GET de la página principal
 router.get('/', function(req, res) {
   // Conecta a la base de datos
-  client.connect(function(err, db) {
+  client.connect(function() {
     // Ejecuta consulta SQL
-    client.exec_sql("ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;", function(err, datos) {
+    client.exec_sql('ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;', function(err, datos) {
       // Cierra conexión
       client.close();
 

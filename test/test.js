@@ -22,15 +22,15 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
 // Dependencias
-var _ = require("underscore");
-var fs = require("fs");
-var request = require("supertest");
-var should = require("should");
+var _ = require('underscore');
+var fs = require('fs');
+var request = require('supertest');
+var should = require('should');
 
 // Módulos de la aplicación
-var app = require(__dirname + "/../app");
-var informe = require(__dirname + "/../lib/generarInforme");
-var client = require(__dirname + "/../database/client");
+var app = require(__dirname + '/../app');
+var informe = require(__dirname + '/../lib/generarInforme');
+var client = require(__dirname + '/../database/client');
 
 // Método para parsear archivos JSON a objetos JS
 var cargar = function(archivo) {
@@ -39,16 +39,16 @@ var cargar = function(archivo) {
   try {
     config = JSON.parse(fs.readFileSync(archivo));
   } catch (e) {
-    console.log("Error: no existe el archivo " + archivo);
+    console.log('Error: no existe el archivo ' + archivo);
   }
 
   return config;
 };
 
-var enlaces = cargar(__dirname + "/../test/enlaces.json");
+var enlaces = cargar(__dirname + '/../test/enlaces.json');
 
 var datos = {
-  nombre: "prueba",
+  nombre: 'prueba',
   frecuencia: 0.0
 };
 
@@ -62,8 +62,8 @@ describe('Aplicación', function() {
 // Conexión base de datos
 describe('Base de datos', function() {
   it('Conexión y consulta de selección', function() {
-    client.connect(function(err, db) {
-      client.exec_sql("ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;", function(err, datos) {
+    client.connect(function() {
+      client.exec_sql('ACTOR consultor(tareas) CREATE; SELECT * FROM tareas;', function(err, datos) {
         client.close();
         should(datos).not.be.null();
       });
@@ -87,8 +87,8 @@ describe('Enlaces', function() {
     _.each(enlaces, function(valor) {
       var size = _.size(valor);
       should(size).be.exactly(2);
-      should(valor).have.property("nombre");
-      should(valor).have.property("ruta");
+      should(valor).have.property('nombre');
+      should(valor).have.property('ruta');
     });
   });
 });
@@ -100,19 +100,19 @@ describe('Acceso a la página', function() {
     it(valor.nombre, function(done) {
       request(app)
         .get(valor.ruta)
-        .expect("Content-Type", "text/html; charset=utf-8")
+        .expect('Content-Type', 'text/html; charset=utf-8')
         .expect(200)
-        .end(function(err, res) {
+        .end(function(err) {
           if (err) return done(err);
           done();
         });
     });
   });
-  it("Error 404", function(done) {
+  it('Error 404', function(done) {
     request(app)
-      .get("/foo")
+      .get('/foo')
       .expect(404)
-      .end(function(err, res) {
+      .end(function(err) {
         if (err) {
           throw err;
         }

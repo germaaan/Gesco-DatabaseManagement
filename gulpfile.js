@@ -71,7 +71,7 @@ gulp.task('sass', function() {
 
 // Concatena y minifica los archivos JS
 gulp.task('js', function() {
-  return gulp.src("app.js")
+  return gulp.src('app.js')
     .pipe(rename('app.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./'));

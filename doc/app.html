@@ -69,9 +69,7 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.
 
 <span class="hljs-keyword">var</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">'body-parser'</span>);
 <span class="hljs-keyword">var</span> cookieParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">'cookie-parser'</span>);
-<span class="hljs-keyword">var</span> debug = <span class="hljs-built_in">require</span>(<span class="hljs-string">'debug'</span>)(<span class="hljs-string">'Gesco-DatabaseManagement:server'</span>);
 <span class="hljs-keyword">var</span> favicon = <span class="hljs-built_in">require</span>(<span class="hljs-string">'serve-favicon'</span>);
-<span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
 <span class="hljs-keyword">var</span> logger = <span class="hljs-built_in">require</span>(<span class="hljs-string">'morgan'</span>);
 <span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
 global.appRoot = path.resolve(__dirname);</pre></div></div>
@@ -290,7 +288,7 @@ app.use(<span class="hljs-string">'/informes'</span>, informes);</pre></div></di
             
             <div class="content"><div class='highlight'><pre>app.listen(app.get(<span class="hljs-string">'port'</span>), app.get(<span class="hljs-string">'ip'</span>), <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Aplicación escuchando peticiones para la dirección '</span> + app.get(<span class="hljs-string">'ip'</span>) +
-    <span class="hljs-string">' en el puerto '</span> + app.get(<span class="hljs-string">'port'</span>) + <span class="hljs-string">" ..."</span>);
+    <span class="hljs-string">' en el puerto '</span> + app.get(<span class="hljs-string">'port'</span>) + <span class="hljs-string">' ...'</span>);
 });
 
 <span class="hljs-built_in">module</span>.exports = app;</pre></div></div>

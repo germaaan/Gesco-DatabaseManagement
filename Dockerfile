@@ -18,7 +18,3 @@ EXPOSE 5000
 RUN npm -g install gulp bower
 RUN npm install
 RUN bower install --allow-root
-
-# Ejecutar la aplicación
-RUN ifconfig eth0
-RUN gulp public
