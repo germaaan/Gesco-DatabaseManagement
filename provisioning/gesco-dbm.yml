@@ -1,0 +1,26 @@
+---
+- hosts: azure
+  remote_user: germaaan
+  tasks:
+    - name: Descargar script instalación Node
+      get_url: url=https://deb.nodesource.com/setup_4.x dest=./setup_4.x mode=0550
+    - name: Ejecutar script de instalación de Node
+      command: ./setup_4.x
+    - name: Instalar Node.js
+      apt: name=nodejs state=present
+    - name: Instalar Git
+      apt: name=git state=present
+    - name: Descargar repositorio de la aplicación
+      git: repo=https://github.com/Gescosolution/Gesco-DatabaseManagement.git dest=./Gesco-DatabaseManagement
+    - name: Instalar Gulp
+      npm: name=gulp global=yes
+    - name: Instalar Bower
+      npm: name=bower global=yes
+    - name: Instalar Forever
+      npm: name=forever global=yes
+    - name: Instalar dependencias de la aplicación
+      npm: path=Gesco-DatabaseManagement
+    - name: Instalar paquetes usados por el navegador
+      command: chdir=Gesco-DatabaseManagement bower install --allow-root
+    - name: Ejecutar la aplicación
+      command: chdir=Gesco-DatabaseManagement forever start ./app.js
