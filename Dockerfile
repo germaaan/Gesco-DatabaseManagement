@@ -15,10 +15,10 @@ WORKDIR "/home/Gesco-DatabaseManagement"
 
 # Desplegar la aplicación
 EXPOSE 5000
-RUN npm -g install gulp bower forever
+RUN npm -g install gulp bower
 RUN npm install
 RUN bower install --allow-root
 
 # Ejecutar la aplicación
 RUN ifconfig eth0
-RUN gulp docker
+RUN gulp public
